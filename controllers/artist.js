@@ -53,6 +53,17 @@ router.post('/', (req, res)=>{
     })
 });
 
+router.put('/:id', (req, res)=>{
+    db.Artist.findByIdAndUpdate(req.params.id,req.body,{new:true}, function(err, updatedArtist){
+        if (err){
+            res.send({message: "Internal Server Error"})
+            console.log(err)
+        } else {
+            res.redirect(`/artists/${updatedArtist._id}`)
+        }
+    });
+});
+
 
 
 
