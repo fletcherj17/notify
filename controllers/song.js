@@ -3,7 +3,15 @@ const router = express.Router();
 const db = require("../models");
 
 router.get('/', (req,res)=>{
-    res.render('songs/index')
+    db.Song.find({}, function(err, allSongs ){
+        if(err){
+            console.log(err);
+            res.send({message: "Internal Server Error"});
+        }   else {
+            const context = {songs: allSongs}
+            res.render("songs/index", context);
+            }
+    });
 });
 
 module.exports = router;

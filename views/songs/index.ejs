@@ -6,14 +6,25 @@
     <title>Songs</title>
 </head>
 <body>
-    <h1>Song List</h1>
+    <h1>Welcome to NOTify</h1>
+    <nav>
         <ul>
-            <li>Song</li>
-            <li>Song</li>
-            <li>Song</li>
-            <li>Song</li>
-            <li>Song</li>
+            <li><a href="/">Home</a></li>
+
         </ul>
-    
+    </nav>
+    <main>
+        <h2>Song List</h2>
+        <ul>
+            <% songs.forEach(song => { %>
+                <li>
+                    <a href="/songs/<%= songs._id %>"><%= song.title %></a>
+                </li>
+            <% }); %>
+        </ul>
+            <% if(songs.length === 0){ %>
+                <p>No songs available.</p>
+            <% } %>
+    </main>
 </body>
 </html>
