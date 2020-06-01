@@ -14,4 +14,10 @@ router.get('/', (req,res)=>{
     });
 });
 
+// route for new song
+router.get("/new", function (req, res) {
+    res.render("songs/new");
+});
+
+
 module.exports = router;
