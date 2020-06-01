@@ -44,7 +44,18 @@ router.get("/:id", (req,res)=> {
     });
 });
 
-
+//edit route
+router.get("/:id/edit", (req,res)=> {
+    db.Song.findById(req.params.id, (err, foundSong)=>{
+        if(err){
+            console.log(err);
+            res.send({ message: "Internal Server Error" });
+        } else {
+            const context = {song: foundSong}
+            res.render("songs/edit", context);
+        }
+    });
+});
 
 
 module.exports = router;
