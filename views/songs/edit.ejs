@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Song</title>
+    <title>Edit <%= song.title%></title>
 </head>
 <body>
-    <h1>Edit Song</h1>
+    <h1>Edit <%= song.title%></h1>
     <nav>
         <ul>
             <li><a href="/">Home</a></li>
@@ -14,7 +14,12 @@
         </ul>
     </nav>
 
-
+    <form action="/songs/<%= song._id %>?_method=PUT" method="POST">
+    <input type="text" name="title" value="<%= song.title %>">
+    <input type="text" name="artist" value="<%= song.artist %>">
+    <input type="submit" value="Update Song">
+    </form>
 
 </body>
 </html>
+
