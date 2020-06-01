@@ -64,6 +64,17 @@ router.put('/:id', (req, res)=>{
     });
 });
 
+router.delete('/:id', (req, res)=>{
+    db.Artist.findByIdAndDelete(req.params.id, (error, deletedArtist)=>{
+        if (error){
+            console.log(error)
+            res.send({message: "Internal Server Error!"})
+        } else {
+            res.redirect('/artists')
+        }
+    })
+});
+
 
 
 
