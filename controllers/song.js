@@ -14,7 +14,8 @@ router.get('/', (req,res)=>{
     });
 });
 
-router.get('/new', (req,res)=>{
+// route for new song
+router.get("/new", function (req, res) {
     res.render("songs/new");
 });
 
