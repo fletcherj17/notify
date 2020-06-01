@@ -1,7 +1,8 @@
 
 //external moduled
 const express = require('express');
-
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 
 const app = express();
 
@@ -9,6 +10,9 @@ const app = express();
 const PORT = 3000;
 app.set('view engine', 'ejs');
 
+//middleware
+app.use(bodyparser.urlencoded({ extended: false }));
+app.use(methodOverride("_method"));
 
 //bind server
 app.listen(PORT, function(){
