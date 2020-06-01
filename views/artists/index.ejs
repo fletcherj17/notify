@@ -13,7 +13,7 @@
         <% } else { %>
         <ul>
             <% artists.forEach(artist => { %>
-            <li><%= artist.name %> </li>
+            <li><a href="/artists/<%=artist._id%>"><%= artist.name %></a></li>
             <% }) %>
             <% } %>
         </ul>

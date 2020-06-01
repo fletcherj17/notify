@@ -20,16 +20,27 @@ router.get('/new', (req,res)=>{
 });
 
 router.get("/:id", function(req,res){
-    db.Artist.findById(req.params.id).populate("songs").exec(function(err, foundArtist){
+    db.Artist.findById(req.params.id, function(err, foundArtist){
         if(err){
             console.log(err.errmsg);
             res.send({ message: "Internal Server Error" });
         } else {
             const context = {artist: foundArtist}
-            res.render("authors/show", context);
+            res.render("artists/show", context);
         }
         });
     });
+    router.get("/:id/edit", function(req,res){
+        db.Artist.findById(req.params.id, function(err, foundArtist){
+            if(err){
+                console.log(err.errmsg);
+                res.send({ message: "Internal Server Error" });
+            } else {
+                const context = {artist: foundArtist}
+                res.render("artists/edit", context);
+            }
+            });
+        });
 
 router.post('/', (req, res)=>{
     db.Artist.create(req.body, (err, createdArtist)=>{
@@ -41,6 +52,8 @@ router.post('/', (req, res)=>{
         }
     })
 });
+
+
 
 
 
