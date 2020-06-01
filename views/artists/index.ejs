@@ -14,14 +14,16 @@
         </ul>
     </nav>
     <p>
+        <% if (artists.length === 0) { %>
+        No artists available. Check connection, or try again later. 
+        <% } else { %>
         <ul>
-            <li>Artist</li>
-            <li>Artist</li>
-            <li>Artist</li>
-            <li>Artist</li>
-            <li>Artist</li>
-
+            <% artists.forEach(artist => { %>
+            <li><a href="/artists/<%=artist._id%>"><%= artist.name %></a></li>
+            <% }) %>
+            <% } %>
         </ul>
-    </p>
+        </p>
+        <button><a href="/artists/new">Add New Artist</a></button>
 </body>
 </html>

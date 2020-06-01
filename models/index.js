@@ -9,7 +9,7 @@ mongoose.connect(connectionString, {
 }).then(()=>{
     console.log('MongoDB connected...')
 }).catch((error)=>{
-    console.log('MongoDB error', error.errmsg)
+    console.log('MongoDB error', error)
 });
 
 module.exports = {

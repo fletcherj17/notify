@@ -14,8 +14,47 @@ router.get('/', (req,res)=>{
     });
 });
 
-router.get('/:id', (req,res)=>{
-    res.render('artists/show', req.params.id)
+
+router.get('/new', (req,res)=>{
+    res.render("artists/new");
 });
+
+router.get("/:id", function(req,res){
+    db.Artist.findById(req.params.id, function(err, foundArtist){
+        if(err){
+            console.log(err.errmsg);
+            res.send({ message: "Internal Server Error" });
+        } else {
+            const context = {artist: foundArtist}
+            res.render("artists/show", context);
+        }
+        });
+    });
+    router.get("/:id/edit", function(req,res){
+        db.Artist.findById(req.params.id, function(err, foundArtist){
+            if(err){
+                console.log(err.errmsg);
+                res.send({ message: "Internal Server Error" });
+            } else {
+                const context = {artist: foundArtist}
+                res.render("artists/edit", context);
+            }
+            });
+        });
+
+router.post('/', (req, res)=>{
+    db.Artist.create(req.body, (err, createdArtist)=>{
+        if (err){
+            res.send({message: 'Internal server error.'})
+            console.log(err.errmsg)
+        } else {
+            res.redirect('/artists');
+        }
+    })
+});
+
+
+
+
 
 module.exports = router;
