@@ -11,7 +11,7 @@ const PORT = 3000;
 app.set('view engine', 'ejs');
 
 //middleware
-app.use(bodyparser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 
 //root routes
