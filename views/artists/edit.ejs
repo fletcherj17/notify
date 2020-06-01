@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Artist</title>
+
+    <title>Edit <%= artist.name%></title>
 </head>
 <body>
-    <h1>Edit Artist</h1>
-    <nav>
+    <h1>Edit "<%= artist.name%>"</h1>
+     <nav>
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/artists">Artists</a></li>
         </ul>
     </nav>
 
+    <form action="/artists/<%= artist._id %>?_method=PUT" method="POST">
+    <input type="text" name="name" value="<%= artist.name%>">
+    <input type="submit" value="Update Artist">
+    </form>
 
-    
 </body>
 </html>
