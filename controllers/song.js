@@ -28,8 +28,23 @@ router.post("/", (req,res)=> {
         console.log(err);
         res.send({ message: "Internal Server Error" });
         } else {
-        res.redirect("/songs");
-        }
+            db.Artist.findById(req.body.artistID, (err, foundArtist)=>{
+                if (err) {
+                console.log(err)
+                res.send({message: 'Internal Server Error'})
+                } else {
+                foundArtist.songs.push(createdSong);
+                foundArtist.save((err, savedArtist)=>{
+                    if (err){
+                    console.log(err)
+                    res.send("Internal Server Error")
+                    } else {
+                        res.redirect('/songs')
+                    }
+                })
+                }   
+            })
+        };
     });
 });
 
