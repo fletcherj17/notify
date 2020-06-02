@@ -51,16 +51,19 @@ router.post("/", (req,res)=> {
 
 //show route
 router.get("/:id", (req,res)=> {
-    db.Song.findById(req.params.id, (err, foundSong) =>{
-        if(err){
-        console.log(err);
-        res.send({ message: "Internal Server Error" });
+    db.Artist.findOne({'songs': req.params.id}).populate({
+        path: 'songs',
+        match: {_id: req.params.id}
+    }).exec((err, foundArtist)=>{
+        if (err){
+            res.send("internal server error. :(")
+            console.log(err)
         } else {
-        const context = {song: foundSong}
-        res.render("songs/show", context);
+            res.render('songs/show', {artist: foundArtist,
+            song: foundArtist.songs[0]})
         }
+        })
     });
-});
 
 //edit route
 router.get("/:id/edit", (req,res)=> {
