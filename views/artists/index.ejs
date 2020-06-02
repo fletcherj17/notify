@@ -7,24 +7,31 @@
     <title>Artists</title>
 </head>
 <body>
-    <h1>Artist Library</h1>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/artists/new">Add a new artist</a></li>
-        </ul>
-    </nav>
-    <p>
-        <% if (artists.length === 0) { %>
-        No artists available. Check connection, or try again later. 
-        <% } else { %>
-        <ul>
-            <% artists.forEach(artist => { %>
-            <li><a href="/artists/<%=artist._id%>"><%= artist.name %></a></li>
-            <% }) %>
-            <% } %>
-        </ul>
-        </p>
-        <button><a href="/artists/new">Add New Artist</a></button>
+    <h1>NOTify</h1>
+    <div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/artists/new">Add a new artist</a></li>
+            </ul>
+        </nav>
+        <main>
+        <!-- <section class="content"> -->
+            <h2>Artists</h2>
+            <p>
+                <% if (artists.length === 0) { %>
+                No artists available. Check connection, or try again later. 
+                <% } else { %>
+                <ul>
+                    <% artists.forEach(artist => { %>
+                    <li><a href="/artists/<%=artist._id%>"><%= artist.name %></a></li>
+                    <% }) %>
+                    <% } %>
+                </ul>
+            </p>
+                <button><a href="/artists/new">Add New Artist</a></button>
+        <!-- </section> -->
+        </main>
+    </div>
 </body>
 </html>
