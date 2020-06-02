@@ -7,7 +7,7 @@
     <title>Artist Show Page</title>
 </head>
 <body>
-    <h1>Artist</h1>
+    <h1><%= artist.name %></h1>
     <nav>
         <ul>
             <li><a href="/">Home</a></li>
@@ -15,7 +15,6 @@
         </ul>
     </nav>
     <br>
-        <h2><%= artist.name %> </h2>
         <h3>Check out our selection of <%= artist.name %>'s tracks!</h3>
         <ul>
             <% for( let i = 0; i < artist.songs.length; i++ ) { %>

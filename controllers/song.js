@@ -91,13 +91,23 @@ router.put("/:id", (req, res) =>{
 
 //delete route
 router.delete("/:id", (req, res)=> {
-    db.Song.findByIdAndDelete(req.params.id, (err, deleteSong) => {
+    db.Song.findByIdAndRemove(req.params.id, (err, deletedSong) => {
+    db.Artist.findOne({'songs': req.params.id}, (err, foundArtist)=>{
         if(err){
             console.log(err);
             res.send({ message: "internal Server Error"});
         } else {
-            res.redirect('/songs');
-        }
+            foundArtist.songs.remove(req.params.id);
+            foundArtist.save((err,updatedArtist)=>{
+                if (err){
+                    console.log(err);
+                res.send({ message: "internal Server Error"});
+                } else {
+                    res.redirect('/songs')
+                }
+                });
+            };
+        });
     });
 });
 
