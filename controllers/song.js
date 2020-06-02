@@ -59,14 +59,14 @@ router.get("/:id/edit", (req,res)=> {
 
 //delete route
 router.delete("/:id", (req, res)=> {
-    db.Song.findByIdAndDelete(req.params.id), (err, deleteSong) => {
+    db.Song.findByIdAndDelete(req.params.id, (err, deleteSong) => {
         if(err){
             console.log(err);
             res.send({ message: "internal Server Error"});
         } else {
             res.redirect('/songs');
         }
-    }
+    })
 });
 
 
