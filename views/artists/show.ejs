@@ -18,7 +18,9 @@
         <h2><%= artist.name %> </h2>
         <h3>Check out our selection of <%= artist.name %>'s tracks!</h3>
         <ul>
-            
+            <% for( let i = 0; i < artist.songs.length; i++ ) { %>
+            <li><a href="/songs/<%= artist.songs[i]._id %>"> <%= artist.songs[i].title %></a></li>
+            <% } %>
         </ul>
         <button><a href="/artists/<%= artist._id %>/edit">Edit Artist</a></button>
         <form action="/artists/<%= artist._id %>?_method=DELETE" method="POST">
