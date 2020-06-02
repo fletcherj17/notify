@@ -28,7 +28,7 @@ router.post("/", (req,res)=> {
         console.log(err);
         res.send({ message: "Internal Server Error" });
         } else {
-            db.Artist.findById(req.body.artistID, (err, foundArtist)=>{
+            db.Artist.findById(req.body.artistId, (err, foundArtist)=>{
                 if (err) {
                 console.log(err)
                 res.send({message: 'Internal Server Error'})
@@ -39,6 +39,7 @@ router.post("/", (req,res)=> {
                     console.log(err)
                     res.send("Internal Server Error")
                     } else {
+                        console.log(savedArtist)
                         res.redirect('/songs')
                     }
                 })
