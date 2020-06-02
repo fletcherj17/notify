@@ -57,6 +57,17 @@ router.get("/:id/edit", (req,res)=> {
     });
 });
 
+router.put("/:id", (req, res) =>{
+    db.Song.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedSong) => {
+    if(err){
+        console.log(err);
+        res.send({ message: "internal Server Error" })
+    }   else {
+        res.redirect(`/songs/${updatedSong._id}`)
+    }
+    })
+})
+
 //delete route
 router.delete("/:id", (req, res)=> {
     db.Song.findByIdAndDelete(req.params.id, (err, deleteSong) => {
@@ -66,8 +77,7 @@ router.delete("/:id", (req, res)=> {
         } else {
             res.redirect('/songs');
         }
-    })
+    });
 });
-
 
 module.exports = router;
