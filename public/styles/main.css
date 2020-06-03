@@ -9,6 +9,7 @@ h1 {
     font-size: 35px;
     color: rgb(60, 182, 60);
     display: inline;
+    text-justify: 200px;
 }
 
 #logo {
@@ -25,7 +26,6 @@ nav ul {
     height: 100%;
     background-color: black;
     color: white;
-
 }
 
 li a {
@@ -52,7 +52,32 @@ div nav {
     height: 100%;
 }
 
-/* div section.content { */
+ul {
+    list-style-type: none;
+}
+
 main {    
     flex: 2;
+}
+
+.user-message {
+    color: rgb(206, 81, 81);
+    font-size: 12px;
+}
+
+/* link styling */
+a:link {
+    color: white;
+}
+
+a:visited {
+    color: lightgrey;
+}
+
+a:hover {
+    color: rgb(60, 182, 60);
+}
+
+a:active {
+    color: white;
 }
