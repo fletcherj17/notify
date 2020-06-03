@@ -16,7 +16,7 @@
             </ul>
         </nav>
         <main>
-            <h1><%= song.title %></h1>
+            <h2><%= song.title %></h2>
     <h3>by: <a href="/artists/<%= artist._id %>"><%= artist.name %></a></h3>
             <button><a href="/songs/<%= song._id %>/edit">Edit</a></button>
             <form action="/songs/<%= song._id %>?_method=DELETE" method="POST">
