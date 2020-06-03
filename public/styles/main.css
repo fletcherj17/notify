@@ -1,13 +1,19 @@
 body {
-    background-color: rgb(21, 21, 21);
+    background-color: rgb(30, 30, 30);
     color: rgb(243, 247, 252);
     height: 100vh;
+    font-family: 'Lexend Tera', sans-serif;
 }
 
 h1 {
     font-size: 35px;
-    padding-left: 30px;
-    color: rgb(60, 182, 60)
+    color: rgb(60, 182, 60);
+    display: inline;
+}
+
+#logo {
+    height: 35px;
+    width: 35px;
 }
 
 nav ul {
