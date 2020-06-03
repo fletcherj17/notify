@@ -6,6 +6,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const controllers = require('./controllers')
+const session = require('express-session');
 
 
 //app config
@@ -16,6 +17,11 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
+app.use(session({
+    secret: "dlfDJMskGwd495ft20JSD", //a random string
+    resave: false,
+    saveUninitialized: false
+}));
 
 //root routes
 app.get("/", function (req, res) {

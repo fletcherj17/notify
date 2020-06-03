@@ -18,10 +18,9 @@
             </ul>
         </nav>
     <main>
-        <h2>Edit <%= song.title%></h2>
+        <h2>Edit "<%= song.title%>"</h2>
         <form action="/songs/<%= song._id %>?_method=PUT" method="POST">
-        <input type="text" name="title" value="<%= song.title %>">
-        <input type="text" name="artist" value="<%= song.artist %>">
+        Title: <input type="text" name="title" value="<%= song.title %>">
         <input type="submit" value="Update Song">
         </form>
     </main>
