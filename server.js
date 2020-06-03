@@ -17,10 +17,17 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
-app.use(session({
+app.use(
+    session({ // adds sessions to server
+    store: new MongoStore({
+        url: "mongodb://localhost:27017/notify"
+    }),
     secret: "dlfDJMskGwd495ft20JSD", //a random string
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7 * 2 // two weeks (in seconds)
+    }
 }));
 
 //root routes
