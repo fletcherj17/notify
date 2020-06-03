@@ -36,13 +36,33 @@ router.get('/login', (req, res)=>{
     res.render('users/login')
 })
 // login post
-router.post('/login', (req, res)=>{ //any route will work
-    req.session.name = req.body.name
-    req.session.email = req.body.password;
-    req.session.password = req.body.password;
-    req.session.logged   = true;
-    console.log(req.session);
-    res.redirect('/users/index')
+router.post("/login", async function (req, res) {
+    try {
+      // see if user with email exists
+    const foundUser = await db.User.findOne({ email: req.body.email });
+      // if they do not exist send error
+    if (!foundUser) {
+        return res.send({ message: "Password or Email incorrect." });
+    }
+      // if they do compare password with hash
+    const match = await bcrypt.compare(req.body.password, foundUser.password);
+      // if not match send error
+    if (!match) {
+        return res.send({ message: "Password or Email incorrect." });
+    }
+      // if match create session for authentication
+    req.session.currentUser = {
+        id: foundUser._id,
+        name: foundUser.name,
+        email: foundUser.email,
+    };
+    console.log(req.session.currentUser);
+      // redirect to home
+    res.redirect("/");
+    } catch (err) {
+    res.send({ message: "Internal Server Error", error: err });
+    console.log(err)
+    }
 });
 
 // logout
