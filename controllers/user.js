@@ -4,8 +4,8 @@ const db = require("../models");
 const bcrypt = require('bcryptjs');
 
 // root route
-router.get('/', (req,res)=>{
-    res.render('users/index')
+router.get('/index', (req,res)=>{
+    res.render('users/index', {user: req.session.currentUser})
 });
 
 // register form
@@ -33,7 +33,7 @@ router.post("/signup", async function (req, res) {
 
 // login form
 router.get('/login', (req, res)=>{
-    res.render('users/login')
+    res.render('users/login', {message: ''})
 })
 // login post
 router.post("/login", async function (req, res) {
@@ -42,13 +42,13 @@ router.post("/login", async function (req, res) {
     const foundUser = await db.User.findOne({ email: req.body.email });
       // if they do not exist send error
     if (!foundUser) {
-        return res.send({ message: "Password or Email incorrect." });
+        res.render('users/login',{ message: "Incorrect e-mail, or user does not exist." });
     }
       // if they do compare password with hash
     const match = await bcrypt.compare(req.body.password, foundUser.password);
       // if not match send error
     if (!match) {
-        return res.send({ message: "Password or Email incorrect." });
+        return res.render('users/login', {message: 'Incorrect password'});
     }
       // if match create session for authentication
     req.session.currentUser = {
@@ -58,7 +58,7 @@ router.post("/login", async function (req, res) {
     };
     console.log(req.session.currentUser);
       // redirect to home
-    res.redirect("/");
+    res.redirect("/index");
     } catch (err) {
     res.send({ message: "Internal Server Error", error: err });
     console.log(err)
@@ -68,7 +68,6 @@ router.post("/login", async function (req, res) {
 // logout
 router.get('/logout', (req, res) => {
     req.session.destroy(function(err){
-    
         if(err){
             console.log(err)
             res.send({message: 'Internal Server Error'})

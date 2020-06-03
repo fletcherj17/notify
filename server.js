@@ -38,9 +38,9 @@ app.get("/", function (req, res) {
 });
 
 // artist route
-app.use("/artists", /* authRequired, */ controllers.artist);
+app.use("/artists", authRequired, controllers.artist);
 // song route
-app.use("/songs", /* authRequired, */ controllers.song);
+app.use("/songs", authRequired, controllers.song);
 //user route
 app.use("/", controllers.user);
 

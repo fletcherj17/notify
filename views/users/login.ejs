@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="shortcut icon" href="/images/notify-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous" defer></script>
+    <script src="/scripts/app.js" defer></script>
     <title>Log-in</title>
 </head>
 <body>
@@ -21,9 +23,12 @@
         <h3>Don't have an account? Create one <a href="/signup">here</a>.</h3>
         <br>
         <form action="/login" method="POST">
-        <p>Email: <input type="email" name="email" placeholder="example@youremail.com" required></p>
-        <p>Password: <input type="password" name="password" placeholder="Password" required></p>
-        <p><input type="submit" value="Log-in"></p>
+        <p>Email: <input type="email" name="email" placeholder="example@youremail.com" required id="login-email"></p>
+        <p>Password: <input type="password" name="password" placeholder="Password" required id="login-pwd"></p>
+        <% if (message) { %>
+            <p><%= message%></p>
+            <% } %>
+        <p><input type="submit" value="Log-in" id="login-submit"></p>
         </form>
     </main>
     </div>
