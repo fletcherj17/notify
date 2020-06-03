@@ -4,8 +4,8 @@ const db = require("../models");
 const bcrypt = require('bcryptjs');
 
 // root route
-router.get('/', (req,res)=>{
-    res.render('users/index')
+router.get('/index', (req,res)=>{
+    res.render('users/index', {user: req.session.currentUser})
 });
 
 // register form
@@ -58,7 +58,7 @@ router.post("/login", async function (req, res) {
     };
     console.log(req.session.currentUser);
       // redirect to home
-    res.redirect("/");
+    res.redirect("/index");
     } catch (err) {
     res.send({ message: "Internal Server Error", error: err });
     console.log(err)
@@ -68,7 +68,6 @@ router.post("/login", async function (req, res) {
 // logout
 router.get('/logout', (req, res) => {
     req.session.destroy(function(err){
-    
         if(err){
             console.log(err)
             res.send({message: 'Internal Server Error'})
