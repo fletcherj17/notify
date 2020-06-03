@@ -7,20 +7,23 @@
     <title>Edit <%= song.title%></title>
 </head>
 <body>
-    <h1>Edit <%= song.title%></h1>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/songs">Songs</a></li>
-        </ul>
-    </nav>
-
-    <form action="/songs/<%= song._id %>?_method=PUT" method="POST">
-    <input type="text" name="title" value="<%= song.title %>">
-    <input type="text" name="artist" value="<%= song.artist %>">
-    <input type="submit" value="Update Song">
-    </form>
-
+    <h1>NOTify</h1>
+    <div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/songs">Songs</a></li>
+            </ul>
+        </nav>
+    <main>
+        <h2>Edit <%= song.title%></h2>
+        <form action="/songs/<%= song._id %>?_method=PUT" method="POST">
+        <input type="text" name="title" value="<%= song.title %>">
+        <input type="text" name="artist" value="<%= song.artist %>">
+        <input type="submit" value="Update Song">
+        </form>
+    </main>
+    </div>
 </body>
 </html>
 
