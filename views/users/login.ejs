@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="shortcut icon" href="/images/notify-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
-    <title>Create Account</title>
+    <title>Log-in</title>
 </head>
 <body>
     <h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1>
@@ -17,12 +17,13 @@
         </ul>
     </nav>
     <main>
-        <h2>Create New Account</h2>
-        <form action="/users/signup" method="POST">
-        <p>Name: <input type="text" name="name" placeholder="John D." required></p>
+        <h2>Log-in to your account</h2>
+        <h3>Don't have an account? Create one <a href="/signup">here</a>.</h3>
+        <br>
+        <form action="/users" method="POST">
         <p>Email: <input type="email" name="email" placeholder="example@youremail.com" required></p>
         <p>Password: <input type="password" name="password" placeholder="Password" required></p>
-        <p><input type="submit" value="Create Account"></p>
+        <p><input type="submit" value="Log-in"></p>
         </form>
     </main>
     </div>
