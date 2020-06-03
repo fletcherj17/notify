@@ -1,13 +1,15 @@
 
 //external modules
 const express = require('express');
-const app = express();
 const router = express.Router();
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const controllers = require('./controllers')
+const authRequired = require("./middleware/authRequired");
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
+const app = express();
 
 //app config
 const PORT = 3000;
@@ -32,13 +34,13 @@ app.use(
 
 //root routes
 app.get("/", function (req, res) {
-    res.render("index");
+    res.render("index", { user: req.session.currentUser });
 });
 
 // artist route
-app.use("/artists", controllers.artist);
+app.use("/artists", /* authRequired, */ controllers.artist);
 // song route
-app.use("/songs", controllers.song);
+app.use("/songs", /* authRequired, */ controllers.song);
 //user route
 app.use("/users", controllers.user);
 
