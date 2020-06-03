@@ -7,19 +7,24 @@
     <title>Add a Song</title>
 </head>
 <body>
-    <h1>Add a Song to the NOTify Library</h1>
-    <nav>
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/songs">Songs</a></li>
-        </ul>
-    </nav>
+    <h1>Notify</h1>
+    <div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/songs">Songs</a></li>
+            </ul>
+        </nav>
+    <main>
+        <h2>Add a Song to the NOTify Library</h2>
 
-    <form action="/songs" method="post">
-    <input type="text" name="title" placeholder="Song Title">
-    <input type="text" name="artist" placeholder="Artist Name">
-    <input type="text" name="link" placeholder="Song Link">
-    <input type="submit" value="Add Song">
-    </form>
+        <form action="/songs" method="post">
+        <input type="text" name="title" placeholder="Song Title">
+        <input type="text" name="artist" placeholder="Artist Name">
+        <input type="text" name="link" placeholder="Song Link">
+        <input type="submit" value="Add Song">
+        </form>
+    </main>
+    </div>
 </body>
 </html>

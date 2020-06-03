@@ -7,24 +7,26 @@
     <title><%= song.title %></title>
 </head>
 <body>
-    <h1><%= song.title %></h1>
+    <h1>NOTify</h1>
+    <div>
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/songs">Songs</a></li>
             </ul>
         </nav>
-        <section>
+        <main>
+            <h2><%= song.title %></h2>
+            <ul>
+                <li>Title: <%= song.title %></li>
+                <li>Artist: <%= song.artist %> </li>
+            </ul>
             <button><a href="/songs/<%= song._id %>/edit">Edit</a></button>
             <form action="/songs/<%= song._id %>?_method=DELETE" method="POST">
             <input type="submit" value="DELETE">
             </form>
-                <ul>
-                    <li>Title: <%= song.title %></li>
-                    <li>Artist: <%= song.artist %> </li>
-                </ul>
-        </section>
-    </header>
-    <main>
+        </main>
+
+    </div>
 </body>
 </html>
