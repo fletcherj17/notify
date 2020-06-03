@@ -16,7 +16,9 @@ router.get('/', (req,res)=> {
 
 // new route
 router.get("/new", (req, res)=> {
-    res.render("songs/new");
+    db.Artist.find({}, (err, allArtists)=>{
+        res.render("songs/new", {artists: allArtists});
+    })
 });
 
 // create route
@@ -26,23 +28,42 @@ router.post("/", (req,res)=> {
         console.log(err);
         res.send({ message: "Internal Server Error" });
         } else {
-        res.redirect("/songs");
-        }
+            db.Artist.findById(req.body.artistId, (err, foundArtist)=>{
+                if (err) {
+                console.log(err)
+                res.send({message: 'Internal Server Error'})
+                } else {
+                foundArtist.songs.push(createdSong);
+                foundArtist.save((err, savedArtist)=>{
+                    if (err){
+                    console.log(err)
+                    res.send("Internal Server Error")
+                    } else {
+                        console.log(savedArtist)
+                        res.redirect('/songs')
+                    }
+                })
+                }   
+            })
+        };
     });
 });
 
 //show route
 router.get("/:id", (req,res)=> {
-    db.Song.findById(req.params.id, (err, foundSong) =>{
-        if(err){
-        console.log(err);
-        res.send({ message: "Internal Server Error" });
+    db.Artist.findOne({'songs': req.params.id}).populate({
+        path: 'songs',
+        match: {_id: req.params.id}
+    }).exec((err, foundArtist)=>{
+        if (err){
+            res.send("internal server error. :(")
+            console.log(err)
         } else {
-        const context = {song: foundSong}
-        res.render("songs/show", context);
+            res.render('songs/show', {artist: foundArtist,
+            song: foundArtist.songs[0]})
         }
+        })
     });
-});
 
 //edit route
 router.get("/:id/edit", (req,res)=> {
@@ -70,15 +91,24 @@ router.put("/:id", (req, res) =>{
 
 //delete route
 router.delete("/:id", (req, res)=> {
-    db.Song.findByIdAndDelete(req.params.id, (err, deleteSong)=> {
+    db.Song.findByIdAndRemove(req.params.id, (err, deletedSong) => {
+    db.Artist.findOne({'songs': req.params.id}, (err, foundArtist)=>{
         if(err){
             console.log(err);
             res.send({ message: "internal Server Error"});
         } else {
-            res.redirect('/songs');
-        }
+            foundArtist.songs.remove(req.params.id);
+            foundArtist.save((err,updatedArtist)=>{
+                if (err){
+                    console.log(err);
+                res.send({ message: "internal Server Error"});
+                } else {
+                    res.redirect('/songs')
+                }
+                });
+            };
+        });
     });
 });
-
 
 module.exports = router;
