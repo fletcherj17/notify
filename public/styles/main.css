@@ -7,8 +7,13 @@ body {
 
 h1 {
     font-size: 35px;
-    padding-left: 30px;
-    color: rgb(60, 182, 60)
+    color: rgb(60, 182, 60);
+    display: inline;
+}
+
+#logo {
+    height: 35px;
+    width: 35px;
 }
 
 nav ul {
