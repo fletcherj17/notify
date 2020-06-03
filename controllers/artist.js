@@ -16,11 +16,12 @@ router.get('/', (req,res)=>{
 });
 
 
-//create route
+//new route
 router.get('/new', (req,res)=>{
     res.render("artists/new");
 });
 
+//create route
 router.post('/', (req, res)=>{
     db.Artist.create(req.body, (err, createdArtist)=>{
         if (err){
@@ -32,7 +33,7 @@ router.post('/', (req, res)=>{
     })
 });
 
-//update route
+//edit route
 router.get("/:id/edit", function(req,res){
     db.Artist.findById(req.params.id, function(err, foundArtist){
         if(err){
@@ -45,6 +46,7 @@ router.get("/:id/edit", function(req,res){
         });
     });
 
+//update route
 router.put('/:id', (req, res)=>{
     db.Artist.findByIdAndUpdate(req.params.id,req.body,{new:true}, function(err, updatedArtist){
         if (err){

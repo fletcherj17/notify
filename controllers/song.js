@@ -78,6 +78,7 @@ router.get("/:id/edit", (req,res)=> {
     });
 });
 
+//update route
 router.put("/:id", (req, res) =>{
     db.Song.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, updatedSong) => {
     if(err){
