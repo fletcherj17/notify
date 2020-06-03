@@ -42,7 +42,7 @@ router.post("/login", async function (req, res) {
     const foundUser = await db.User.findOne({ email: req.body.email });
       // if they do not exist send error
     if (!foundUser) {
-        res.render('users/login',{ message: "Incorrect e-mail, or user does not exist." });
+        return res.render('users/login',{ message: "Incorrect e-mail, or user does not exist." });
     }
       // if they do compare password with hash
     const match = await bcrypt.compare(req.body.password, foundUser.password);
