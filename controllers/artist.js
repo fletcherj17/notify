@@ -15,18 +15,6 @@ router.get('/', (req,res)=>{
     });
 });
 
-// show route
-router.get("/:id", function(req,res){
-    db.Artist.findById(req.params.id).populate({path: 'songs'})
-    .exec((err, foundArtist)=>{
-        if (err){
-            res.send("Internal Server Error")
-            console.log(err)
-        } else {
-            res.render('artists/show', {artist: foundArtist})
-        }
-    })
-});
 
 //create route
 router.get('/new', (req,res)=>{
@@ -68,14 +56,38 @@ router.put('/:id', (req, res)=>{
     });
 });
 
+// show route
+router.get("/:id", function(req,res){
+    db.Artist.findById(req.params.id).populate({path: 'songs'})
+    .exec((err, foundArtist)=>{
+        if (err){
+            res.send("Internal Server Error")
+            console.log(err)
+        } else {
+            res.render('artists/show', {artist: foundArtist})
+        }
+    })
+});
+
 //delete route
 router.delete('/:id', (req, res)=>{
-    db.Artist.findByIdAndDelete(req.params.id, (error, deletedArtist)=>{
+    db.Artist.findByIdAndRemove(req.params.id, (error, deletedArtist)=>{
         if (error){
             console.log(error)
             res.send({message: "Internal Server Error!"})
         } else {
-            res.redirect('/artists')
+            db.Song.deleteMany({
+                _id: {
+                    $in:deletedArtist.songs
+                }
+            }, (err, data)=>{
+                if (err){
+                    console.log(err)
+                    res.send({message: "internal server error"})
+                } else {
+                    res.redirect('/artists')
+                }
+            })
         }
     })
 });
