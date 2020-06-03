@@ -19,9 +19,9 @@
     <main>
         <h2>Create New Account</h2>
         <form action="/users/signup" method="POST">
-        <p>Name: <input type="text" name="name" placeholder="John D."></p>
-        <p>Email: <input type="email" name="email" placeholder="example@youremail.com"></p>
-        <p>Password: <input type="password" name="password"></p>
+        <p>Name: <input type="text" name="name" placeholder="John D." required></p>
+        <p>Email: <input type="email" name="email" placeholder="example@youremail.com" required></p>
+        <p>Password: <input type="password" name="password" placeholder="Password" required></p>
         <p><input type="submit" value="Create Account"></p>
         </form>
     </main>

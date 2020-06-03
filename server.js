@@ -42,7 +42,7 @@ app.use("/artists", /* authRequired, */ controllers.artist);
 // song route
 app.use("/songs", /* authRequired, */ controllers.song);
 //user route
-app.use("/users", controllers.user);
+app.use("/", controllers.user);
 
 //bind server
 app.listen(PORT, function(){

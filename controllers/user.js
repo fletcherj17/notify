@@ -14,6 +14,12 @@ router.get('/signup', (req, res)=>{
 })
 
 // register post
+router.post('/signup', async (req, res)=>{})
+    //access req.body
+    //search db for user with existing email
+    //if found , send error
+    //if not, we hash password and create user
+    //redirect to login
 
 // login form
 router.get('/login', (req, res)=>{
@@ -26,7 +32,7 @@ router.post('/login', (req, res)=>{ //any route will work
     req.session.password = req.body.password;
     req.session.logged   = true;
     console.log(req.session);
-    res.redirect('/authors')
+    res.redirect('/users/index')
 });
 
 // logout
