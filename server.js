@@ -43,6 +43,8 @@ app.use("/artists", authRequired, controllers.artist);
 app.use("/songs", authRequired, controllers.song);
 //user route
 app.use("/", controllers.user);
+// playlist route
+app.use("/playlists", authRequired, controllers.playlist)
 
 //bind server
 app.listen(PORT, function(){
