@@ -26,9 +26,9 @@
             <li><a href="/songs/<%= artist.songs[i]._id %>"> <%= artist.songs[i].title %></a></li>
             <% } %>
         </ul>
-        <button><a href="/artists/<%= artist._id %>/edit">Edit Artist</a></button>
+        <button class="button"><a href="/artists/<%= artist._id %>/edit">EDIT ARTIST</a></button>
         <form action="/artists/<%= artist._id %>?_method=DELETE" method="POST">
-        <input type="submit" value="DELETE">
+        <input class="button" type="submit" value="DELETE">
         </form>
     </main>
     </div>
