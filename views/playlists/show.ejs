@@ -13,7 +13,7 @@
     <div>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
+                <li><a href="/index">Home</a></li>
                 <li><a href="/playlists">Playlists</a></li>
             </ul>
         </nav>
@@ -24,9 +24,9 @@
             <li><a href="/songs/<%= playlist.songs[i]._id %>"> <%= playlist.songs[i].title %></a> by <a href="/artists/<%= playlist.songs[i].artist._id %>"><%= playlist.songs[i].artist.name %></a></li>
             <% } %>
         </ul>
-        <button><a href="/playlists/<%= playlist._id %>/edit">Edit Playlist</a></button>
+        <button class="button"><a href="/playlists/<%= playlist._id %>/edit">Edit Playlist</a></button>
         <form action="/playlists/<%= playlist._id %>?_method=DELETE" method="POST">
-        <input type="submit" value="DELETE">
+        <input class="button" type="submit" value="DELETE">
         </form>
     </main>
     </div>

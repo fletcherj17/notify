@@ -13,7 +13,7 @@
     <div>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
+                <li><a href="/index">Home</a></li>
                 <li><a href="/playlists">Playlists</a></li>
             </ul>
         </nav>
@@ -22,7 +22,7 @@
         <h2>Edit "<%= playlist.name%>"</h2>
         <form action="/playlists/<%= playlist._id %>?_method=PUT" method="POST">
         <input type="text" name="name" value="<%= playlist.name%>">
-        <input type="submit" value="Update Playlist">
+        <input class="button" type="submit" value="Update Playlist">
         </form>
     </main>
     </div>

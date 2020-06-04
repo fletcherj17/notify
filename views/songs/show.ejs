@@ -24,9 +24,9 @@
         <main>
         <h2><%= song.title %></h2>
         <h3>by: <a href="/artists/<%= artist._id %>"><%= artist.name %></a></h3>
-            <button><a href="/songs/<%= song._id %>/edit">Edit</a></button>
+            <button class="button"><a href="/songs/<%= song._id %>/edit">Edit</a></button>
             <form action="/songs/<%= song._id %>?_method=DELETE" method="POST">
-            <input type="submit" value="DELETE">
+            <input class="button" type="submit" value="DELETE">
             </form>
             
         <iframe width="75%" color="#000000" height="166" download="true" scrolling="no" frameborder="no" allow="autoplay" auto_play="true"
