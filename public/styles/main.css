@@ -68,7 +68,11 @@ main {
 /* link styling */
 a:link {
     color: white;
-    /* text-decoration: none; */
+}
+
+.button {
+    color: white;
+    text-decoration: none; 
 }
 
 a:visited {
@@ -88,14 +92,13 @@ a:active {
     border: none;
     border-radius: 10px;
     color: white;
-    padding: 16px 32px;
+    padding: 5px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    width: 160px;
-    height: 50px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
+    font-size: 12px;
+    width: 120px;
+    height: 25px;
+    margin: 2px;
     cursor: pointer;
 }
