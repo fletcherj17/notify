@@ -21,15 +21,12 @@
         <h2>Add a Song to the NOTify Library</h2>
     <form action="/songs" method="POST">
     <input type="text" name="title" placeholder="Song Title" required>
-    <select name="artistId">
+    <select name="artistId" required>
         <% for( let i = 0; i < artists.length; i++ ) { %>
         <option value="<%= artists[i]._id %>"><%= artists[i].name %></option>
         <% } %>
     </select>
-        <% if (message) { %>
-        <p class="user-message"><%= message %></p>
-        <% } %>
-    <input type="text" name="link" placeholder="SoundCloud Link">
+    <input type="text" name="link" placeholder="SoundCloud Link" required>
     <input type="submit" value="Add Song">
     </form>
     <p>Artist not listed? Click <a href="/artists/new">here</a>.</p>
