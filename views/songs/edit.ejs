@@ -22,6 +22,12 @@
         <h2>Edit "<%= song.title%>"</h2>
         <form action="/songs/<%= song._id %>?_method=PUT" method="POST">
         Title: <input type="text" name="title" value="<%= song.title %>" required>
+        <p>Add to playlist? <select name="playlistId">
+            <option value="false">Select Playlist</option>
+            <% for( let i = 0; i < playlists.length; i++ ) { %>
+            <option value="<%= playlists[i]._id %>"><%= playlists[i].title %></option>
+            <% } %>
+        </select></p>
         <input type="submit" value="Update Song">
         </form>
     </main>

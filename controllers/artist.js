@@ -28,7 +28,7 @@ router.post('/', (req, res)=>{
             res.send({message: 'Internal server error.'})
             console.log(err.errmsg)
         } else {
-            res.redirect('/artists');
+            res.redirect('/artists/'+createdArtist._id);
         }
     })
 });
