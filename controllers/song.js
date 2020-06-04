@@ -30,7 +30,7 @@ router.post("/", (req,res)=> {
         console.log(err);
         res.send({ message: "Internal Server Error" });
         } else {
-            db.Artist.findById(req.body.artistId, (err, foundArtist)=>{
+            db.Artist.findById(req.body.artist, (err, foundArtist)=>{
                 if (err) {
                 console.log(err)
                 res.send({message: 'Internal Server Error'})
@@ -42,6 +42,22 @@ router.post("/", (req,res)=> {
                     res.send("Internal Server Error")
                     } else {
                         console.log(savedArtist)
+                    }
+                })
+                }   
+            })
+            db.Playlist.findById(req.body.artist, (err, foundPlaylist)=>{
+                if (err) {
+                console.log(err)
+                res.send({message: 'Internal Server Error'})
+                } else {
+                foundPlaylist.songs.push(createdSong);
+                foundPlaylist.save((err, savedPlaylist)=>{
+                    if (err){
+                    console.log(err)
+                    res.send("Internal Server Error")
+                    } else {
+                        console.log(savedPlaylist)
                         res.redirect('/songs')
                     }
                 })
@@ -61,6 +77,7 @@ router.get("/:id", (req,res)=> {
             res.send("internal server error. :(")
             console.log(err)
         } else {
+            console.log(foundArtist)
             res.render('songs/show', {artist: foundArtist,
             song: foundArtist.songs[0]})
         }
@@ -70,14 +87,15 @@ router.get("/:id", (req,res)=> {
 //edit route
 router.get("/:id/edit", (req,res)=> {
     db.Song.findById(req.params.id, (err, foundSong)=>{
+            db.Playlist.find({}, (err, allPlaylists)=>{ 
         if(err){
             console.log(err);
             res.send({ message: "Internal Server Error" });
         } else {
-            const context = {song: foundSong}
-            res.render("songs/edit", context);
+            res.render("songs/new", {playlists: allPlaylists, song: foundSong});
         }
     });
+});
 });
 
 //update route
