@@ -15,5 +15,6 @@ mongoose.connect(connectionString, {
 module.exports = {
     Artist: require('./Artist'),
     Song: require('./Song'),
-    User: require('./User')
+    User: require('./User'),
+    Playlist: require('./Playlist')
 }

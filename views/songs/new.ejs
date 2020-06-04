@@ -21,6 +21,7 @@
     <main>
         <h2>Add a Song to the NOTify Library</h2>
     <form action="/songs" method="POST">
+<<<<<<< HEAD
     <input type="text" name="title" placeholder="Song Title" required>
     <select name="artistId" required>
         <% for( let i = 0; i < artists.length; i++ ) { %>
@@ -29,8 +30,24 @@
     </select>
     <input type="text" name="link" placeholder="SoundCloud Link" required>
     <input type="submit" value="Add Song">
+=======
+    <p>Title: <input type="text" name="title" placeholder="No Tears Left to Cry"></p>
+    <p>Artist: <select name="artistId">
+        <% for( let i = 0; i < artists.length; i++ ) { %>
+        <option value="<%= artists[i]._id %>"><%= artists[i].name %></option>
+        <% } %>
+    </select></p>
+    <p>Add to playlist? <select name="playlistId">
+        <option value="false">None</option>
+        <% for( let i = 0; i < playlists.length; i++ ) { %>
+        <option value="<%= playlists[i]._id %>"><%= playlists[i].title %></option>
+        <% } %>
+    </select></p>
+    <p>Link: <input type="text" name="link" placeholder="Link"></p>
+    <p><input type="submit" value="Add Song"></p>
+>>>>>>> submaster
     </form>
-    <p>Artist not listed? Click <a href="/artists/new">here</a>.</p>
+    <h3>Artist not listed? Click <a href="/artists/new">here</a>.</h3>
     </main>
     </div>
 </body>
