@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="shortcut icon" href="/images/notify-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
+    <title>Playlists</title>
+</head>
+<body>
+    <h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1>
+    <div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/songs">Songs</a></li>
+                <li><a href="/playlists/new">Add a new playlist</a></li>
+            </ul>
+        </nav>
+        <main>
+
+            <h2>Playlists</h2>
+            <p>
+                <% if (playlists.length === 0) { %>
+                No playlists available. Check connection, or try again later. 
+                <% } else { %>
+                <ul>
+                    <% playlists.forEach(playlist => { %>
+                    <li><a href="/playlists/<%=playlist._id%>"><%= playlist.title %></a></li>
+                    <% }) %>
+                    <% } %>
+                </ul>
+            </p>
+                <button><a href="/playlists/new">Add New Playlist</a></button>
+
+        </main>
+    </div>
+</body>
+</html>

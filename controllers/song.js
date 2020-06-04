@@ -17,8 +17,10 @@ router.get('/', (req,res)=> {
 // new route
 router.get("/new", (req, res)=> {
     db.Artist.find({}, (err, allArtists)=>{
-        res.render("songs/new", {artists: allArtists});
-    })
+        db.Playlist.find({}, (err, allPlaylists)=>{ 
+        res.render("songs/new", {artists: allArtists, playlists: allPlaylists});
+        })
+    });
 });
 
 // create route
