@@ -10,12 +10,18 @@ router.get('/index', (req,res)=>{
 
 // register form
 router.get('/signup', (req, res)=>{
-    res.render('users/new')
+    res.render('users/new', {message: ''});
 })
 
 // register post
 router.post("/signup", async function (req, res) {
     try {
+// see if user with email exists
+    const foundUser = await db.User.findOne({ email: req.body.email });
+          // if they do not exist send error
+    if (foundUser) {
+    return res.render('users/new',{ message: "User already exists. / Please log in." });
+    }
       // access the req.body
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(req.body.password, salt);
