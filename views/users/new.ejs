@@ -9,10 +9,10 @@
     <title>Create Account</title>
 </head>
 <body>
-    <h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1>
     <div>
     <nav>
         <ul>
+            <li><h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1></li>
             <li><a href="/">Home</a></li>
         </ul>
     </nav>
@@ -22,6 +22,9 @@
         <p>Name: <input type="text" name="name" placeholder="John D." required></p>
         <p>Email: <input type="email" name="email" placeholder="example@youremail.com" required></p>
         <p>Password: <input type="password" name="password" placeholder="Password" required></p>
+        <% if (message) { %>
+            <p class="user-message"><%= message.split('/ ')[0]%><a href="/login"><%= message.split('/ ')[1]%></a></p>
+            <% } %>
         <p><input type="submit" value="Create Account"></p>
         </form>
     </main>

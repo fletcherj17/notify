@@ -9,19 +9,20 @@
     <title>Edit <%= artist.name%></title>
 </head>
 <body>
-    <h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1>
     <div>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
+                <li><h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1></li>
+                <li><a href="/index">Home</a></li>
                 <li><a href="/artists">Artists</a></li>
+                <li><a href="/logout">Log out</a></li>
             </ul>
         </nav>
 
     <main>
         <h2>Edit "<%= artist.name%>"</h2>
         <form action="/artists/<%= artist._id %>?_method=PUT" method="POST">
-        <input type="text" name="name" value="<%= artist.name%>">
+        <input type="text" name="name" value="<%= artist.name%>" required>
         <input type="submit" value="Update Artist">
         </form>
     </main>

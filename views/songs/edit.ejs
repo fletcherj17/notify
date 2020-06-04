@@ -9,18 +9,19 @@
     <title>Edit <%= song.title%></title>
 </head>
 <body>
-    <h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1>
     <div>
         <nav>
             <ul>
-                <li><a href="/">Home</a></li>
+                <li><h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1></li>
+                <li><a href="/index">Home</a></li>
                 <li><a href="/songs">Songs</a></li>
+                <li><a href="/logout">Log out</a></li>
             </ul>
         </nav>
     <main>
         <h2>Edit "<%= song.title%>"</h2>
         <form action="/songs/<%= song._id %>?_method=PUT" method="POST">
-        Title: <input type="text" name="title" value="<%= song.title %>">
+        Title: <input type="text" name="title" value="<%= song.title %>" required>
         <input type="submit" value="Update Song">
         </form>
     </main>
