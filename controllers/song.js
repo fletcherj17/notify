@@ -46,11 +46,12 @@ router.post("/", (req,res)=> {
                 })
                 }   
             })
-            db.Playlist.findById(req.body.artist, (err, foundPlaylist)=>{
+            db.Playlist.findById(req.body.playlistId, (err, foundPlaylist)=>{
                 if (err) {
                 console.log(err)
                 res.send({message: 'Internal Server Error'})
                 } else {
+                console.log(foundPlaylist)
                 foundPlaylist.songs.push(createdSong);
                 foundPlaylist.save((err, savedPlaylist)=>{
                     if (err){

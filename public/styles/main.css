@@ -70,9 +70,18 @@ a:link {
     color: white;
 }
 
-.button {
-    color: white;
-    text-decoration: none; 
+.button:hover {
+    transform: scale(1.1);
+    transition: .7 ease-in;
+}
+
+button a {
+    text-decoration: none;
+    
+}
+
+button a:hover {
+    color: black;
 }
 
 a:visited {
