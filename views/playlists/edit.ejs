@@ -9,15 +9,14 @@
     <title>Edit <%= playlist.name%></title>
 </head>
 <body>
-    <h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1>
     <div>
         <nav>
             <ul>
+                <li><h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1></li>
                 <li><a href="/index">Home</a></li>
                 <li><a href="/playlists">Playlists</a></li>
             </ul>
         </nav>
-
     <main>
         <h2>Edit "<%= playlist.name%>"</h2>
         <form action="/playlists/<%= playlist._id %>?_method=PUT" method="POST">
