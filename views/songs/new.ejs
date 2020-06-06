@@ -21,7 +21,7 @@
     <main>
         <h2>Add a Song to the NOTify Library</h2>
     <form action="/songs" method="POST">
-    <p>Title: <input type="text" name="title" placeholder="No Tears Left to Cry"></p>
+    <p>Title: <input type="text" name="title" placeholder="No Tears Left to Cry" required></p>
     <p>Artist: <select name="artist">
         <option value="false">Select Artist</option>
         <% for( let i = 0; i < artists.length; i++ ) { %>
@@ -34,10 +34,10 @@
         <option value="<%= playlists[i]._id %>"><%= playlists[i].title %></option>
         <% } %>
     </select></p>
-    <p>Link: <input type="text" name="link" placeholder="Link"></p>
+    <p>Link: <input type="text" name="link" placeholder="Link" required></p>
     <p><input class="button" type="submit" value="Add Song"></p>
     </form>
-    <p>Artist not listed? <form action="/artists" method="post"><input type="text" name="name" placeholder="Artist's Name" required><input type="submit" value="Add Artist" target="_blank"></p>
+    <p>Artist not listed? <form action="/artists" method="post"><input type="text" name="name" placeholder="Artist's Name" required><input class="button" type="submit" value="Add Artist" target="_blank"></p>
     </main>
     </div>
 </body>
