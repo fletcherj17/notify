@@ -35,10 +35,10 @@ li a {
     text-decoration: none;
 }
 
-  /* Change the link color on hover */
 li a:hover {
     background-color: #555;
     color: white;
+    font-weight: bold;
 }
 
 div {
@@ -67,7 +67,11 @@ main {
 
 /* link styling */
 a:link {
-    color: white;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+a:link:hover {
+    color: rgba(255, 255, 255);
 }
 
 
@@ -82,7 +86,7 @@ button a {
 }
 
 button a:hover {
-    color: black;
+    color: white;
 }
 
 a:visited {
@@ -90,7 +94,8 @@ a:visited {
 }
 
 a:hover {
-    color: rgb(60, 182, 60);
+    color: white;
+    font-weight: bold;
 }
 
 a:active {
@@ -101,7 +106,7 @@ a:active {
     background-color: rgb(60, 182, 60);
     border: black;
     border-radius: 10px;
-    color: rgba(255, 255, 255, 0.899);
+    color: rgba(255, 255, 255, 0.8);
     padding: 5px;
     text-align: center;
     text-decoration: none;
