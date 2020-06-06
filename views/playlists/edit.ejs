@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="shortcut icon" href="/images/notify-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
-    <title>Edit <%= playlist.name%></title>
+    <title>Edit <%= playlist.title%></title>
 </head>
 <body>
     <div>
@@ -18,9 +18,9 @@
             </ul>
         </nav>
     <main>
-        <h2>Edit "<%= playlist.name%>"</h2>
+        <h2>Edit "<%= playlist.title%>"</h2>
         <form action="/playlists/<%= playlist._id %>?_method=PUT" method="POST">
-        <input type="text" name="name" value="<%= playlist.name%>">
+        <input type="text" name="title" value="<%= playlist.title%>">
         <input class="button" type="submit" value="Update Playlist">
         </form>
     </main>

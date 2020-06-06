@@ -46,7 +46,7 @@ router.post("/", (req,res)=> {
                 })
                 }   
             })
-            db.Playlist.findById(req.body.playlistId, (err, foundPlaylist)=>{
+            db.Playlist.findById(req.body.playlist, (err, foundPlaylist)=>{
                 if (err) {
                 console.log(err)
                 res.send({message: 'Internal Server Error'})
@@ -93,7 +93,7 @@ router.get("/:id/edit", (req,res)=> {
             console.log(err);
             res.send({ message: "Internal Server Error" });
         } else {
-            res.render("songs/new", {playlists: allPlaylists, song: foundSong});
+            res.render("songs/edit", {playlists: allPlaylists, song: foundSong});
         }
     });
 });
@@ -106,7 +106,24 @@ router.put("/:id", (req, res) =>{
         console.log(err);
         res.send({ message: "internal Server Error" })
     }   else {
-        res.redirect(`/songs/${updatedSong._id}`)
+        db.Playlist.findById(req.body.playlist, (err, foundPlaylist)=>{
+            if (err) {
+            console.log(err)
+            res.send({message: 'Internal Server Error'})
+            } else {
+            console.log(foundPlaylist)
+            foundPlaylist.songs.push(updatedSong);
+            foundPlaylist.save((err, savedPlaylist)=>{
+                if (err){
+                console.log(err)
+                res.send("Internal Server Error")
+                } else {
+                    console.log(savedPlaylist)
+                    res.redirect(`/songs/${updatedSong._id}`)
+                }
+            })
+            }   
+        })
     }
     })
 })

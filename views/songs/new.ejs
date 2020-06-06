@@ -28,7 +28,7 @@
         <option value="<%= artists[i]._id %>"><%= artists[i].name %></option>
         <% } %>
     </select></p>
-    <p>Add to playlist? <select name="playlistId">
+    <p>Add to playlist? <select name="playlist">
         <option value="false">Select Playlist</option>
         <% for( let i = 0; i < playlists.length; i++ ) { %>
         <option value="<%= playlists[i]._id %>"><%= playlists[i].title %></option>
