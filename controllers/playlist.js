@@ -57,6 +57,10 @@ router.put('/:id', (req, res)=>{
     });
 });
 
+let artistIds = [];
+let artistNames = {artist: []};
+
+
 // show route
 router.get("/:id", function(req,res){
     db.Playlist.findById(req.params.id).populate('songs')
@@ -65,22 +69,19 @@ router.get("/:id", function(req,res){
             res.send("Internal Server Error")
             console.log(err)
         } else {
-            let artistIds = [];
             foundPlaylist.songs.forEach(song =>{
                 artistIds.push(song.artist);
             })
-            let artistNames = [];
             artistIds.forEach(id =>{
                 db.Artist.findById(id, (err, foundArtist)=>{
                     if (err){
                         console.log(err)
                     } else {
-                        return artistIds.push(foundArtist.name)
+                        return artistNames.artist.push(foundArtist.name)
                     }
                 })
             });
-            console.log(artistIds)
-            res.render('playlists/show', {playlist: foundPlaylist, /* artists: artistNames */})
+            res.render('playlists/show', {playlist: foundPlaylist, artists: artistNames})
         }
     })
 });

@@ -21,7 +21,7 @@
         <h2><%= playlist.title %> </h2>
         <ul>
             <% for( let i = 0; i < playlist.songs.length; i++ ) { %>
-            <li><a href="/songs/<%= playlist.songs[i]._id %>"> <%= playlist.songs[i].title %></a> by <a href="/artists/<%= playlist.songs[i].artist._id %>"><%= "artist" %></a></li>
+            <li><a href="/songs/<%= playlist.songs[i]._id %>"> <%= playlist.songs[i].title %></a> by <a href="/artists/<%= playlist.songs[i].artist._id %>"><%= artists.artist[i] %></a></li>
             <% } %>
         </ul>
         <a class="button" href="/playlists/<%= playlist._id %>/edit">Edit Playlist</a>
