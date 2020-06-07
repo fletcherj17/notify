@@ -9,19 +9,24 @@
     <title>Edit Account</title>
 </head>
 <body>
-    <header>
-    <h1>Edit Account</h1>
+    <div>
         <nav>
             <ul>
                 <li><h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1></li>
-                <li><a href="/">Home</a></li>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/artists">Artists</a></li>
+                <li><a href="/songs">Songs</a></li>
+                <li><a href="/playlists">Playlists</a></li>
+                <li><a href="/logout">Log out</a></li>
             </ul>
         </nav>
-    </header>
     <main>
-        <form action="/users" method="POST">
-            <input type="text" name="name" placeholder="User Name" required />
+        <h2>Update E-mail Password</h2>
+        <form action="/<%= user._id %>?_method=PUT" method="POST">
+            New Password: <input type="password" name="password" placeholder="New Password" />
+            <input type="submit" value="Update Password">
         </form>
     </main>
+    </div>
 </body>
 </html>

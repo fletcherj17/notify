@@ -57,9 +57,6 @@ router.put('/:id', (req, res)=>{
     });
 });
 
-let artistIds = [];
-let artistNames = {artist:[]};
-
 // show route
 router.get("/:id", function(req,res){
     db.Playlist.findById(req.params.id).populate('songs')

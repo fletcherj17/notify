@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const controllers = require('./controllers')
 const authRequired = require("./middleware/authRequired");
+const logout = require("./middleware/logout");
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
@@ -34,17 +35,19 @@ app.use(
 
 //root routes
 app.get("/", function (req, res) {
-    res.render("index", { user: req.session.currentUser });
+    res.render("index");
 });
 
 // artist route
 app.use("/artists", authRequired, controllers.artist);
 // song route
 app.use("/songs", authRequired, controllers.song);
-//user route
-app.use("/", controllers.user);
 // playlist route
 app.use("/playlists", authRequired, controllers.playlist)
+//user route
+app.use('/signup', logout, controllers.user)
+app.use('/login', logout, controllers.user)
+app.use("/", controllers.user);
 
 //bind server
 app.listen(PORT, function(){
