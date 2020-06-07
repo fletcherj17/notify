@@ -65,28 +65,12 @@ main {
     font-size: 12px;
 }
 
-/* link styling */
 a:link {
     color: rgba(255, 255, 255, 0.8);
 }
 
 a:link:hover {
     color: rgba(255, 255, 255);
-}
-
-
-.button:hover {
-    transform: scale(1.1);
-    transition: .7 ease-in;
-}
-
-button a {
-    text-decoration: none;
-    
-}
-
-button a:hover {
-    color: white;
 }
 
 a:visited {
@@ -112,13 +96,27 @@ a:active {
     text-decoration: none;
     display: inline-block;
     font-size: 12px;
-    width: 120px;
+    width: 160px;
     height: 25px;
     margin: 2px;
     cursor: pointer;
+    font-family: 'Lexend Tera', sans-serif;
 }
 
 .button:hover {
     color: white;
     font-weight: bold;
+    transform: scale(1.1);
+    transition: .7 ease-in;
+
+}
+
+a.button {
+    text-decoration: none;
+    height: 15px;
+    width: 150px;
+}
+
+a.button:hover {
+    color: white;
 }
