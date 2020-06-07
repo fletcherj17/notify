@@ -120,3 +120,8 @@ a.button {
 a.button:hover {
     color: white;
 }
+
+.button:hover {
+    color: white;
+    font-weight: bold;
+}
