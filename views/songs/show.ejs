@@ -24,7 +24,7 @@
         <main>
         <h2><%= song.title %></h2>
         <h3>by: <a href="/artists/<%= artist._id %>"><%= artist.name %></a></h3>
-            <button class="button"><a href="/songs/<%= song._id %>/edit">Edit</a></button>
+            <a class="button" href="/songs/<%= song._id %>/edit">Edit</a>
             <form action="/songs/<%= song._id %>?_method=DELETE" method="POST">
             <input class="button" type="submit" value="Delete">
             </form>
