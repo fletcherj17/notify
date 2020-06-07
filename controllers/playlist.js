@@ -59,29 +59,28 @@ router.put('/:id', (req, res)=>{
 
 // show route
 router.get("/:id", function(req,res){
-    db.Playlist.findById(req.params.id).populate('songs songs.artist')
+    db.Playlist.findById(req.params.id).populate('songs')
     .exec((err, foundPlaylist)=>{
         if (err){
             res.send("Internal Server Error")
             console.log(err)
         } else {
-            const artistIds = [];
+            let artistIds = [];
             foundPlaylist.songs.forEach(song =>{
                 artistIds.push(song.artist);
             })
-            const artistNames = [];
+            let artistNames = [];
             artistIds.forEach(id =>{
                 db.Artist.findById(id, (err, foundArtist)=>{
                     if (err){
-                        console.log(error)
+                        console.log(err)
                     } else {
-                        artistNames.push(foundArtist.name)
+                        return artistIds.push(foundArtist.name)
                     }
                 })
-            })
+            });
             console.log(artistIds)
-            console.log(artistNames)
-            res.render('playlists/show', {playlist: foundPlaylist})
+            res.render('playlists/show', {playlist: foundPlaylist, /* artists: artistNames */})
         }
     })
 });
@@ -93,18 +92,7 @@ router.delete('/:id', (req, res)=>{
             console.log(error)
             res.send({message: "Internal Server Error!"})
         } else {
-            db.Song.deleteMany({
-                _id: {
-                    $in:deletedPlaylist.songs
-                }
-            }, (err, data)=>{
-                if (err){
-                    console.log(err)
-                    res.send({message: "internal server error"})
-                } else {
-                    res.redirect('/playlists')
-                }
-            })
+            res.redirect('/playlists')
         }
     })
 });
