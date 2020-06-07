@@ -1,23 +1,23 @@
-NOTify
+# **NOTify**
 
-<img width="100" alt="notify-icon" src="/images/notify-icon.png">
-
-
-Wireframe -
-
-<img width="401" alt="notify-wireframe" src="/images/notify-wireframe.png">
+![](/images/notify-icon.png)
 
 
-ERD -
-<img width="541" alt="notify-erd" src="/images/notify-erd.png">
+## Wireframe -
+
+![](/images/notify-wireframe.png)
 
 
-Scope -
+## ERD -
+![](/images/notify-erd.png)
+
+
+## Scope -
 
 NOTify will allow users to create an account and sign in to listen to music and create personal playlists. 
 
 
-User Story -
+## User Story -
 
 Users will be able to create an account and log into their personal music library.
 If user clicks on the create account button they will be directed to a create account page. There they will be asked to fill in their name, email, and create a password into a form. Once the user has created a password they will log in and they will be directed to their personal music library.
@@ -27,20 +27,23 @@ If the user clicks on the song page instead, it will open a list of all the song
 Users also have the option to save songs anywhere there are songs. If the user saves a song, it will be in their ‘User Library’. The user library can be accessed from the ‘User Home’, which is shown  on log-in, or by clicking a user avatar in the top right.
 
 
-Milestones -
+## Milestones -
 
-Monday - June 1 (and before)
+### Monday - June 1 (and before)
 - Set up server and controllers
 - Create models
 - Create routes and ejs pages
-Tuesday - June 2
+
+### Tuesday - June 2
 - Populate ejs pages with all necessary info
 - Link all the pages to each other
 - Work on auth
-Wednesday - June 3
+
+### Wednesday - June 3
 - styling
 - add audio player to necesary pages
 - add audio files
-Thursday - June 4
+
+### Thursday - June 4
 - styling
 - stretch goals
