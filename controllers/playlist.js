@@ -57,10 +57,6 @@ router.put('/:id', (req, res)=>{
     });
 });
 
-let artistIds = [];
-let artistNames = {artist: []};
-
-
 // show route
 router.get("/:id", function(req,res){
     db.Playlist.findById(req.params.id).populate('songs')
@@ -69,24 +65,12 @@ router.get("/:id", function(req,res){
             res.send("Internal Server Error")
             console.log(err)
         } else {
-            foundPlaylist.songs.forEach(song =>{
-                artistIds.push(song.artist);
-            })
-            artistIds.forEach(id =>{
-                db.Artist.findById(id, (err, foundArtist)=>{
-                    if (err){
-                        console.log(err)
-                    } else {
-                        return artistNames.artist.push(foundArtist.name)
-                    }
-                })
-            });
-            res.render('playlists/show', {playlist: foundPlaylist, artists: artistNames})
+            res.render('playlists/show', {playlist: foundPlaylist})
         }
     })
 });
 
-//delete route
+//delete routes
 router.delete('/:id', (req, res)=>{
     db.Playlist.findByIdAndRemove(req.params.id, (error, deletedPlaylist)=>{
         if (error){
@@ -96,6 +80,27 @@ router.delete('/:id', (req, res)=>{
             res.redirect('/playlists')
         }
     })
+});
+
+router.delete("/removesong/:pid/:id", (req, res)=> {
+    db.Song.findById(req.params.id, (err, foundSong) => {
+    db.Playlist.findOne({'songs': req.params.id}, (err, foundPlaylist)=>{
+        if(err){
+            console.log(err);
+            res.send({ message: "internal Server Error"});
+        } else {
+                foundPlaylist.songs.remove(req.params.id);
+                foundPlaylist.save((err,updatedPlaylist)=>{
+                    if (err){
+                        console.log(err);
+                    res.send({ message: "internal Server Error"});
+                    } else {
+                        res.redirect('/playlists/'+ req.params.pid)
+                    }
+                    });
+            };
+        });
+    });
 });
 
 

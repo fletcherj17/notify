@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="shortcut icon" href="/images/notify-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
-    <title>Add an Playlist</title>
+    <title>Edit Account</title>
 </head>
 <body>
     <div>
@@ -20,15 +20,13 @@
                 <li><a href="/logout">Log out</a></li>
             </ul>
         </nav>
-
     <main>
-        <h2>Add a playlist to your library</h2>
-        <form action="/playlists" method="post">
-        <input type="text" name="title" placeholder="Playlist's Name">
-        <input class="button" type="submit" value="Add Playlist">
+        <h2>Update E-mail Address</h2>
+        <form action="/<%= user._id %>?_method=PUT" method="POST">
+            Edit E-mail: <input type="email" name="email" placeholder="<%= user.email %>"/>
+            <input type="submit" value="Update E-mail">
         </form>
     </main>
-    
     </div>
 </body>
 </html>
