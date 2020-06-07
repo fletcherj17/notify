@@ -58,8 +58,7 @@ router.put('/:id', (req, res)=>{
 });
 
 let artistIds = [];
-let artistNames = {artist: []};
-
+let artistNames = {artist:[]};
 
 // show route
 router.get("/:id", function(req,res){
@@ -81,6 +80,7 @@ router.get("/:id", function(req,res){
                     }
                 })
             });
+            console.log("artist names", artistNames)
             res.render('playlists/show', {playlist: foundPlaylist, artists: artistNames})
         }
     })
