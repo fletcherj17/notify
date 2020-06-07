@@ -1,5 +1,7 @@
 NOTify
 
+<img width="100" alt="notify-icon" src="/images/notify-icon.png">
+
 
 Wireframe -
 
