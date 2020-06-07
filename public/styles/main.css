@@ -125,3 +125,7 @@ a.button:hover {
     color: white;
     font-weight: bold;
 }
+
+#delete-account {
+    color: red;
+}

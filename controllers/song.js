@@ -58,7 +58,7 @@ router.post("/", (req,res)=> {
                     console.log(err)
                     res.send("Internal Server Error")
                     } else {
-                        console.log(savedPlaylist)
+                        console.log("saved playlist", savedPlaylist)
                         res.redirect('/songs')
                     }
                 })
@@ -78,7 +78,7 @@ router.get("/:id", (req,res)=> {
             res.send("internal server error. :(")
             console.log(err)
         } else {
-            console.log(foundArtist)
+            console.log("found Artist", foundArtist)
             res.render('songs/show', {artist: foundArtist,
             song: foundArtist.songs[0]})
         }
