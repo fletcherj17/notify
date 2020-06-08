@@ -48,3 +48,24 @@ Users also have the option to save songs anywhere there are songs. If the user s
 ### Thursday - June 4
 - styling
 - stretch goals
+
+## Stretch Goals -
+- adding photos to user profiles
+- adding photos to artist pages
+- Making playlists saved specifically to user accounts
+- Stying the pages with songs to display as a table with grid
+
+## 3 Lines of Code -
+- Three lines of code we'd like to share:
+
+This is from login route for user:
+if (!foundUser) {
+        return res.render('users/login',{ message: "Incorrect e-mail, or user does not exist." });
+    }
+
+This is in the login ejs, to display the message:
+<% if (message) { %>
+            <p class="user-message"><%= message%></p>
+            <% } %>
+
+- This is how we notify our users if they enter an incorrect email on the log-in screen.
