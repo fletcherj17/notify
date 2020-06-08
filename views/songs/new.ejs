@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="shortcut icon" href="/images/notify-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
+    <title>Add a Song</title>
+</head>
+<body>
+    <div>
+        <nav>
+            <ul>
+                <li><h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1></li>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/artists">Artists</a></li>
+                <li><a href="/songs">Songs</a></li>
+                <li><a href="/logout">Log out</a></li>
+            </ul>
+        </nav>
+    <main>
+        <h2>Add a Song to the NOTify Library</h2>
+    <form action="/songs" method="POST">
+    <p>Title: <input type="text" name="title" placeholder="No Tears Left to Cry" required></p>
+    <p>Artist: <select name="artist">
+        <option value="false">Select Artist</option>
+        <% for( let i = 0; i < artists.length; i++ ) { %>
+        <option value="<%= artists[i]._id %>"><%= artists[i].name %></option>
+        <% } %>
+    </select></p>
+    <p>Add to playlist? <select name="playlist">
+        <option value="false">Select Playlist</option>
+        <% for( let i = 0; i < playlists.length; i++ ) { %>
+        <option value="<%= playlists[i]._id %>"><%= playlists[i].title %></option>
+        <% } %>
+    </select></p>
+    <p>Link: <input type="text" name="link" placeholder="Link" required></p>
+    <p><input class="button" type="submit" value="Add Song"></p>
+    </form>
+    <p>Artist not listed? <form action="/artists" method="post"><input type="text" name="name" placeholder="Artist's Name" required><input class="button" type="submit" value="Add Artist" target="_blank"></p>
+    </main>
+    </div>
+</body>
+</html>

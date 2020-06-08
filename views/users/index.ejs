@@ -6,27 +6,22 @@
         <link rel="stylesheet" href="/styles/main.css">
         <link rel="shortcut icon" href="/images/notify-icon.png">
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
-        <script src="/scripts/soundcloudApi.js"></script>
-        <title>NOTify</title>
+    <title><%= user.name %>'s Profile</title>
     </head>
     <body>
             <div>
             <nav>
                 <ul>
                     <li><h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1></li>
-                    <li><a href="/login">Log-in</a></li>
                     <li><a href="/artists">Artists</a></li>
                     <li><a href="/songs">Songs</a></li>
+                    <li><a href="/playlists">Playlists</a></li>
+                    <li><a href="/logout">Log out</a></li>
                 </ul>
             </nav>
             <main>
-                <h3>NOTify Home</h3>
-                <p>The premier destination for audible stimulation!</p><br>
-                <h3>Featured Song this Week</h3>
-                <img src="/images/rain-on-me.png" alt="Rain on me" width="200">
-                <iframe width="75%" color="#000000" height="166" download="true" scrolling="no" frameborder="no" allow="autoplay" auto_play="true"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/825642412&amp;">
-        </iframe>
+                <h3>Welcome, <%= user.name.split(" ")[0] %>!</h3>
+                <a class="button" href="/<%= user.id %>">Account Info</a>
             </main>
             </div>
     </body>

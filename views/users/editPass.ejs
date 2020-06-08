@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="shortcut icon" href="/images/notify-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
+    <title>Edit Account</title>
+</head>
+<body>
+    <div>
+        <nav>
+            <ul>
+                <li><h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1></li>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/artists">Artists</a></li>
+                <li><a href="/songs">Songs</a></li>
+                <li><a href="/playlists">Playlists</a></li>
+                <li><a href="/logout">Log out</a></li>
+            </ul>
+        </nav>
+    <main>
+        <h2>Update E-mail Password</h2>
+        <form action="/<%= user._id %>?_method=PUT" method="POST">
+            New Password: <input type="password" name="password" placeholder="New Password" />
+            <input type="submit" value="Update Password">
+        </form>
+    </main>
+    </div>
+</body>
+</html>

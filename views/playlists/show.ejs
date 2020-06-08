@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="shortcut icon" href="/images/notify-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
+    <title>Playlists</title>
+</head>
+<body>
+    <div>
+        <nav>
+            <ul>
+                <li><h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1></li>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/artists">Artists</a></li>
+                <li><a href="/songs">Songs</a></li>
+                <li><a href="/playlists">Playlists</a></li>
+                <li><a href="/logout">Log out</a></li>
+            </ul>
+        </nav>
+    <main>
+        <h2><%= playlist.title %> </h2>
+        <p>Playlist function is still in beta. To travel to a song's artist's page, select "View Artist".</p>
+        <ul>
+            <% for( let i = 0; i < playlist.songs.length; i++ ) { %>
+            <li><a href="/songs/<%= playlist.songs[i]._id %>"> <%= playlist.songs[i].title %></a><a href="/artists/<%= playlist.songs[i].artist._id %>"> - View Artist</a></li><br>
+            <form action="/playlists/removesong/<%= playlist._id %>/<%= playlist.songs[i]._id %>?_method=DELETE" method="post">
+            <input type="submit" value="Remove Song">
+            </form>
+            <% } %>
+        </ul>
+        <br>
+        <a class="button" href="/playlists/<%= playlist._id %>/edit">Edit Playlist</a>
+        <form action="/playlists/<%= playlist._id %>?_method=DELETE" method="POST">
+        <input class="button" type="submit" value="Delete">
+        </form>
+    </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="shortcut icon" href="/images/notify-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
+    <title>Create Account</title>
+</head>
+<body>
+    <div>
+    <nav>
+        <ul>
+            <li><h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1></li>
+            <li><a href="/">Home</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Create New Account</h2>
+        <form action="/signup" method="POST">
+        <p>Name: <input type="text" name="name" placeholder="John D." required></p>
+        <p>Email: <input type="email" name="email" placeholder="example@youremail.com" required></p>
+        <p>Password: <input type="password" name="password" placeholder="Password" required></p>
+        <% if (message) { %>
+            <p class="user-message"><%= message.split('/ ')[0]%><a href="/login"><%= message.split('/ ')[1]%></a></p>
+            <% } %>
+        <p><input class="button" type="submit" value="Create Account"></p>
+        </form>
+    </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/notify-icon.png">
+    <title>Songs</title>
+</head>
+<body>
+    <div>
+        <nav>
+            <ul>
+                <li><h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1></li>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/artists">Artists</a></li>
+                <li><a href="/artists/new">Add a new artist</a></li>
+                <li><a href="/songs/new">Add a new song</a></li>
+                <li><a href="/playlists">Playlists</a></li>
+                <li><a href="/logout">Log out</a></li>
+            </ul>
+        </nav>
+    <main>
+        <h2>Songs</h2>
+        <ul>
+            <% songs.forEach(song => { %>
+                <li>
+                    <a href="/songs/<%= song._id %>"><%= song.title %></a>
+                </li>
+            <% }); %>
+        </ul>
+            <% if(songs.length === 0){ %>
+                <p>No songs available.</p>
+            <% } %>
+    </main>
+    </div>
+</body>
+</html>

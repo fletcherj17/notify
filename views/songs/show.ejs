@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="shortcut icon" href="/images/notify-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="/scripts/soundcloudApi.js"></script>
+    <title><%= song.title %></title>
+</head>
+<body>
+    <div>
+        <nav>
+            <ul>
+                <li><h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1></li>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/artists">Artists</a></li>
+                <li><a href="/artists/new">Add a new artist</a></li>
+                <li><a href="/songs">Songs</a></li>
+                <li><a href="/songs/new">Add a new song</a></li>
+                <li><a href="/playlists">Playlists</a></li>
+                <li><a href="/logout">Log out</a></li>
+            </ul>
+        </nav>
+        <main>
+        <h2><%= song.title %></h2>
+        <h3>by: <a href="/artists/<%= artist._id %>"><%= artist.name %></a></h3>
+            <a class="button" href="/songs/<%= song._id %>/edit">Edit</a>
+            <form action="/songs/<%= song._id %>?_method=DELETE" method="POST">
+            <input class="button" type="submit" value="Delete">
+            </form>
+            
+        <iframe width="75%" color="#000000" height="166" download="true" scrolling="no" frameborder="no" allow="autoplay" auto_play="true"
+            src="https://w.soundcloud.com/player/?url=https%3A//<%= song.link %>&amp;">
+        </iframe>
+        </main>
+    </div>
+</body>
+</html>

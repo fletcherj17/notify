@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="shortcut icon" href="/images/notify-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
+    <title>Artists</title>
+</head>
+<body>
+    <div>
+        <nav>
+            <ul>
+                <li><h1>N</h1><img src="/images/notify-logo.png" alt="notify logo" id="logo"><h1>Tify</h1></li>
+                <li><a href="/index">Home</a></li>
+                <li><a href="/songs">Songs</a></li>
+                <li><a href="/artists/new">Add a new artist</a></li>
+                <li><a href="/playlists">Playlists</a></li>
+                <li><a href="/logout">Log out</a></li>
+            </ul>
+        </nav>
+        <main>
+
+            <h2>Artists</h2>
+            <p>
+                <% if (artists.length === 0) { %>
+                No artists available. Check connection, or try again later. 
+                <% } else { %>
+                <ul>
+                    <% artists.forEach(artist => { %>
+                    <li><a href="/artists/<%=artist._id%>"><%= artist.name %></a></li>
+                    <% }) %>
+                    <% } %>
+                </ul>
+            </p>
+        </main>
+    </div>
+</body>
+</html>
