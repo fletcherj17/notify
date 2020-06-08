@@ -119,18 +119,6 @@ router.get('/:id/editpass', (req, res)=>{
 });
 });
 
-/* router.put("/:id", (req, res)=>{
-  db.User.findByIdAndUpdate(req.params.id, req.body, { new: true }, async (err, foundUser)=>{
-    if (req.body.password){
-      const salt = await bcrypt.genSalt(10);
-      const hash = await bcrypt.hash(req.body.password, salt);
-      updatedUser.password = hash;
-      console.log(updatedUser)
-      }
-      res.redirect('/'+ req.params.id)
-  });
-} */
-
 router.put('/:id', (req, res)=>{
   db.User.findByIdAndUpdate(req.params.id,req.body,{new:true}, function(err, updatedUser){
       if (err){
@@ -141,12 +129,10 @@ router.put('/:id', (req, res)=>{
           const salt = await bcrypt.genSalt(10);
           const hash = await bcrypt.hash(req.body.password, salt);
           updatedUser.password = hash;
-          console.log(updatedUser)
           }
           if (req.body.password){
             changePassword();
           }
-          console.log(updatedUser)
           res.redirect(`/${updatedUser._id}`)
       }
   });
