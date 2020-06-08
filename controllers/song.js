@@ -46,6 +46,7 @@ router.post("/", (req,res)=> {
                 })
                 }   
             })
+            if (req.body.playlist){
             db.Playlist.findById(req.body.playlist, (err, foundPlaylist)=>{
                 if (err) {
                 console.log(err)
@@ -59,11 +60,12 @@ router.post("/", (req,res)=> {
                     res.send("Internal Server Error")
                     } else {
                         console.log("saved playlist", savedPlaylist)
-                        res.redirect('/songs')
                     }
                 })
                 }   
             })
+        }
+            res.redirect('/songs')
         };
     });
 });
