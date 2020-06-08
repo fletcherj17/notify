@@ -1,12 +1,12 @@
 # **NOTify**
 
-![](/images/notify-icon.png)
+![](public/images/notify-icon.png)
 
 
 ## Wireframe -
 
 ![](public/images/notify-wireframe.png)
-Format: !
+
 
 
 ## ERD -
