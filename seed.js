@@ -1,4 +1,4 @@
-const names = [
+const artists = [
   {
   name: 'Katy Perry'
   },
@@ -55,9 +55,7 @@ const songs = [
     }
 ]
 
-db.Artist.create(, function (err, createdSong) {
-  foundArtist.songs.push(createdSong);
-  createdSong.name = foundArtist.id
+db.Artist.create(artists, function (err, createdSong) {
 });
 
   db.Artist.find({ name: songs.name }, function (err, foundArtist) {
