@@ -27,7 +27,7 @@
             <% for( let i = 0; i < playlist.songs.length; i++ ) { %>
             <li><a href="/songs/<%= playlist.songs[i]._id %>"> <%= playlist.songs[i].title %></a><a href="/artists/<%= playlist.songs[i].artist._id %>"> - View Artist</a></li><br>
             <form action="/playlists/removesong/<%= playlist._id %>/<%= playlist.songs[i]._id %>?_method=DELETE" method="post">
-            <input type="submit" value="Remove Song">
+            <input class="button" type="submit" value="Remove Song">
             </form>
             <% } %>
         </ul>

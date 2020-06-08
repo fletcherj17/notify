@@ -24,7 +24,7 @@
         <form action="/songs/<%= song._id %>?_method=PUT" method="POST">
         Title: <input type="text" name="title" value="<%= song.title %>" required>
         <p>Add to playlist? <select name="playlist">
-            <option value="false">Select Playlist</option>
+            <option value="">Select Playlist</option>
             <% for( let i = 0; i < playlists.length; i++ ) { %>
             <option value="<%= playlists[i]._id %>"><%= playlists[i].title %></option>
             <% } %>

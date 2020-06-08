@@ -28,7 +28,7 @@ router.post("/", (req,res)=> {
     db.Song.create(req.body, function (err, createdSong) {
         if (err) {
         console.log(err);
-        res.send({ message: "Internal Server Error" });
+        return res.send({ message: "Internal Server Error" });
         } else {
             db.Artist.findById(req.body.artist, (err, foundArtist)=>{
                 if (err) {
@@ -39,14 +39,14 @@ router.post("/", (req,res)=> {
                 foundArtist.save((err, savedArtist)=>{
                     if (err){
                     console.log(err)
-                    res.send("Internal Server Error")
+                    return res.send("Internal Server Error")
                     } else {
                         console.log(savedArtist)
                     }
                 })
                 }   
             })
-            if (req.body.playlist){
+            if (req.body.playlist !== "false"){
             db.Playlist.findById(req.body.playlist, (err, foundPlaylist)=>{
                 if (err) {
                 console.log(err)
@@ -57,7 +57,7 @@ router.post("/", (req,res)=> {
                 foundPlaylist.save((err, savedPlaylist)=>{
                     if (err){
                     console.log(err)
-                    res.send("Internal Server Error")
+                    return res.send("Internal Server Error")
                     } else {
                         console.log("saved playlist", savedPlaylist)
                     }
@@ -65,7 +65,7 @@ router.post("/", (req,res)=> {
                 }   
             })
         }
-            res.redirect('/songs')
+            return res.redirect('/songs')
         };
     });
 });
