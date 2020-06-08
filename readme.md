@@ -5,11 +5,12 @@
 
 ## Wireframe -
 
-![](/images/notify-wireframe.png)
+![](public/images/notify-wireframe.png)
+Format: !
 
 
 ## ERD -
-![](/images/notify-erd.png)
+![](public/images/notify-erd.png)
 
 
 ## Scope -
