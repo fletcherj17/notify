@@ -6,7 +6,7 @@ body {
 }
 
 h1 {
-    font-size: 35px;
+    font-size: 40px;
     color: rgb(60, 182, 60);
     display: inline;
     text-justify: 200px;
@@ -29,9 +29,9 @@ nav ul {
 
 li a {
     display: block;
+    border-bottom: solid white 1px;
     color: white;
     padding: 16px 30px;
-    border-radius: 10px;
     text-decoration: none;
 }
 
@@ -39,6 +39,7 @@ li a:hover {
     background-color: #555;
     color: white;
     font-weight: bold;
+    border-radius: 10px;
 }
 
 div {
@@ -129,3 +130,6 @@ a.button:hover {
 #delete-account {
     color: red;
 }
+
+
+
