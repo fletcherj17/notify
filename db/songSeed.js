@@ -1,31 +1,4 @@
-const db = require('./models')
-
-const artists = [
-  {
-  name: 'Katy Perry',
-  songs: []
-  },
-  {
-  name: 'Ariana Grande',
-  songs: []
-  },
-  {
-  name: 'Nicki Minaj',
-  songs: []
-  },
-  {
-  name: 'Drake',
-  songs: []
-  },
-  {
-  name: 'Omarion ft. Various Artists',
-  songs: []
-  },
-  {
-  name: 'Mary J. Blige',
-  songs: []
-  },
-]
+const db = require('../models')
 
 const songs = [
     {
@@ -59,18 +32,13 @@ const songs = [
     artist: 'Drake'
     }
 ]
-artists.forEach(artist =>{
-  db.Artist.create(artist, function (err, createdArtist) {
-    console.log(createdArtist)
-  });
-})
 
 songs.forEach(song =>{
   db.Artist.find({ name: song.artist }, function (err, foundArtist) {
-    console.log(foundArtist)
     db.Song.create(song, function (err, createdSong) {
-      console.log(createdSong)
-      foundArtist[0].songs.push(createdSong);
+      foundArtist[0].songs.push(createdSong._id);
+      foundArtist[0].save();
+      console.log("foundArtist", foundArtist)
       createdSong.artist = foundArtist[0]._id
       createdSong.save();
     });
