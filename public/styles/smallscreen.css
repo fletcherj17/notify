@@ -1,0 +1,132 @@
+body {
+    background-color: rgb(30, 30, 30);
+    color: rgb(243, 247, 252);
+    height: 100vh;
+    font-family: 'Lexend Tera', sans-serif;
+}
+
+h1 {
+    font-size: 26px;
+    color: rgb(60, 182, 60);
+    display: inline;
+    text-justify: 200px;
+}
+
+#logo {
+    height: 35px;
+    width: 35px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+    height: 100%;
+    background-color: black;
+    color: white;
+}
+
+li a {
+    display: block;
+    border-bottom: solid white 1px;
+    color: white;
+    padding: 16px 30px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #555;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+div {
+    display: flex;
+    height: 100%;
+}
+
+div nav {
+    flex: 1;
+    height: 100%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+main {    
+    flex: 3;
+    margin-left: 8%;
+}
+
+.user-message {
+    color: rgb(206, 81, 81);
+    font-size: 12px;
+}
+
+a:link {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+a:link:hover {
+    color: rgba(255, 255, 255);
+}
+
+a:visited {
+    color: white;
+}
+
+a:hover {
+    color: white;
+    font-weight: bold;
+}
+
+a:active {
+    color: white;
+}
+
+.button {
+    background-color: rgb(60, 182, 60);
+    border: black;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    width: 160px;
+    height: 25px;
+    margin: 2px;
+    cursor: pointer;
+    font-family: 'Lexend Tera', sans-serif;
+}
+
+.button:hover {
+    color: white;
+    font-weight: bold;
+    transform: scale(1.1);
+    transition: .7 ease-in;
+
+}
+
+a.button {
+    text-decoration: none;
+    height: 15px;
+    width: 150px;
+}
+
+a.button:hover {
+    color: white;
+}
+
+.button:hover {
+    color: white;
+    font-weight: bold;
+}
+
+#delete-account {
+    color: red;
+}
