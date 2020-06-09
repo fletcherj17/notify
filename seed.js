@@ -59,11 +59,11 @@ const songs = [
     artist: 'Drake'
     }
 ]
-/* artists.forEach(artist =>{
+artists.forEach(artist =>{
   db.Artist.create(artist, function (err, createdArtist) {
     console.log(createdArtist)
   });
-}) */
+})
 
 songs.forEach(song =>{
   db.Artist.find({ name: song.artist }, function (err, foundArtist) {
