@@ -129,6 +129,7 @@ router.put('/:id', (req, res)=>{
           const salt = await bcrypt.genSalt(10);
           const hash = await bcrypt.hash(req.body.password, salt);
           updatedUser.password = hash;
+          updatedUser.save();
           }
           if (req.body.password){
             changePassword();

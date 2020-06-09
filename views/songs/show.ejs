@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="/styles/smallscreen.css">
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="shortcut icon" href="/images/notify-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
@@ -27,7 +28,7 @@
         <main>
         <h2><%= song.title %></h2>
         <h3>by: <a href="/artists/<%= artist._id %>"><%= artist.name %></a></h3>
-            <a class="button" href="/songs/<%= song._id %>/edit">Edit</a>
+            <a class="button-larger" href="/songs/<%= song._id %>/edit">Edit or Add to Playlist</a>
             <form action="/songs/<%= song._id %>?_method=DELETE" method="POST">
             <input class="button" type="submit" value="Delete">
             </form>

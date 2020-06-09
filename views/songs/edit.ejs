@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="/styles/smallscreen.css">
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="shortcut icon" href="/images/notify-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
@@ -24,7 +25,7 @@
         <form action="/songs/<%= song._id %>?_method=PUT" method="POST">
         Title: <input type="text" name="title" value="<%= song.title %>" required>
         <p>Add to playlist? <select name="playlist">
-            <option value="false">Select Playlist</option>
+            <option value="">Select Playlist</option>
             <% for( let i = 0; i < playlists.length; i++ ) { %>
             <option value="<%= playlists[i]._id %>"><%= playlists[i].title %></option>
             <% } %>

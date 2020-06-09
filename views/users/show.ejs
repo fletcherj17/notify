@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="/styles/smallscreen.css">
     <link rel="shortcut icon" href="/images/notify-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/styles/main.css">
@@ -24,7 +25,7 @@
         <h2><%= user.name %>'s Account Info</h2>
         <p>Email: <%= user.email %></p> 
         <a class='button' href="/<%= user.id %>/editemail">Edit E-mail</a> <br>
-        <a class='button' href="/<%= user.id %>/editpass">Edit Password</a>
+        <a class='button' href="/<%= user.id %>/editpass">Edit Password</a><br>
         <form action="/<%= user.id %>?_method=DELETE" method="POST">
             <input class="button" type="submit" value="Delete Account" id="delete-account">
         </form>

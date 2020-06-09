@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" media="screen and (max-width: 600px)" href="/styles/smallscreen.css">
     <link rel="stylesheet" href="/styles/main.css">
     <link rel="shortcut icon" href="/images/notify-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
@@ -25,10 +26,10 @@
         <p>Playlist function is still in beta. To travel to a song's artist's page, select "View Artist".</p>
         <ul>
             <% for( let i = 0; i < playlist.songs.length; i++ ) { %>
-            <li><a href="/songs/<%= playlist.songs[i]._id %>"> <%= playlist.songs[i].title %></a><a href="/artists/<%= playlist.songs[i].artist._id %>"> - View Artist</a></li><br>
+            <li><a href="/songs/<%= playlist.songs[i]._id %>"> <%= playlist.songs[i].title %></a><a href="/artists/<%= playlist.songs[i].artist._id %>"> - View Artist</a></li>
             <form action="/playlists/removesong/<%= playlist._id %>/<%= playlist.songs[i]._id %>?_method=DELETE" method="post">
-            <input type="submit" value="Remove Song">
-            </form>
+            <input class="button" type="submit" value="Remove Song">
+            </form><br>
             <% } %>
         </ul>
         <br>

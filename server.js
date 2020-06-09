@@ -13,7 +13,7 @@ const MongoStore = require('connect-mongo')(session);
 const app = express();
 
 //app config
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.set('view engine', 'ejs');
 
 //middleware
@@ -23,7 +23,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(
     session({ // adds sessions to server
     store: new MongoStore({
-        url: "mongodb://localhost:27017/notify"
+        url: process.env.MONGODB_URI || "mongodb://localhost:27017/notify",
     }),
     secret: "dlfDJMskGwd495ft20JSD", //a random string
     resave: false,

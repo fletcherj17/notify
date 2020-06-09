@@ -60,7 +60,7 @@ router.put('/:id', (req, res)=>{
 
 // show route
 router.get("/:id", function(req,res){
-    db.Artist.findById(req.params.id).populate({path: 'songs'})
+    db.Artist.findById(req.params.id).populate('songs')
     .exec((err, foundArtist)=>{
         if (err){
             res.send("Internal Server Error")
