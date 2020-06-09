@@ -1,24 +1,29 @@
+const db = require('./models')
+
 const artists = [
   {
-  name: 'Katy Perry'
+  name: 'Katy Perry',
+  songs: []
   },
   {
-  name: 'Ariana Grande'
+  name: 'Ariana Grande',
+  songs: []
   },
   {
-  name: 'Nicki Minaj'
+  name: 'Nicki Minaj',
+  songs: []
   },
   {
-  name: 'Nicki Minaj'
+  name: 'Drake',
+  songs: []
   },
   {
-  name: 'Drake'
+  name: 'Omarion ft. Various Artists',
+  songs: []
   },
   {
-  name: 'Omarion ft. Various Artists'
-  },
-  {
-  name: 'Mary J. Blige'
+  name: 'Mary J. Blige',
+  songs: []
   },
 ]
 
@@ -26,41 +31,48 @@ const songs = [
     {
     title: "Swish Swish",
     link: "api.soundcloud.com/tracks/323339196",
-    name: 'Katy Perry'
+    artist: 'Katy Perry'
     },
     {
     title: "No Tears Left To Cry",
     link: 'api.soundcloud.com/tracks/444510972',
-    name: 'Ariana Grande'
+    artist: 'Ariana Grande'
     },
     {
     title: "Super Bass",
     link: 'api.soundcloud.com/tracks/255821207',
-    name: 'Nicki Minaj'
+    artist: 'Nicki Minaj'
     },
     {
     title: "Post to Be",
     link: 'api.soundcloud.com/tracks/214183984',
-    name: 'Omarion ft. Various Artists'
+    artist: 'Omarion ft. Various Artists'
     },
     {
     title: "Be Happy",
     link: 'api.soundcloud.com/tracks/20449520',
-    name: 'Mary J. Blige'
+    artist: 'Mary J. Blige'
     },
     {
     title: "Toosie Slide",
     link: 'api.soundcloud.com/tracks/789615277',
-    name: 'Drake'
+    artist: 'Drake'
     }
 ]
+/* artists.forEach(artist =>{
+  db.Artist.create(artist, function (err, createdArtist) {
+    console.log(createdArtist)
+  });
+}) */
 
-db.Artist.create(artists, function (err, createdSong) {
-});
-
-  db.Artist.find({ name: songs.name }, function (err, foundArtist) {
+songs.forEach(song =>{
+  db.Artist.find({ name: song.artist }, function (err, foundArtist) {
+    console.log(foundArtist)
     db.Song.create(song, function (err, createdSong) {
-      foundArtist.songs.push(createdSong);
-      createdSong.name = foundArtist._id
+      console.log(createdSong)
+      foundArtist[0].songs.push(createdSong);
+      createdSong.artist = foundArtist[0]._id
+      createdSong.save();
     });
   });
+});

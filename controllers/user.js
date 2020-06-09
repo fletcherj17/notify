@@ -108,12 +108,32 @@ router.get('/:id/editemail', (req, res)=>{
 });
 });
 
+router.get('/:id/editpass', (req, res)=>{
+  db.User.findById(req.params.id, (err, foundUser)=>{
+      if(err){
+          console.log(err);
+          res.send({ message: "Internal Server Error" });
+      } else {
+        res.render('users/editPass', {user: foundUser})
+      }
+});
+});
+
 router.put('/:id', (req, res)=>{
   db.User.findByIdAndUpdate(req.params.id,req.body,{new:true}, function(err, updatedUser){
       if (err){
           res.send({message: "Internal Server Error"})
           console.log(err)
       } else {
+        const changePassword = async ()=>{
+          const salt = await bcrypt.genSalt(10);
+          const hash = await bcrypt.hash(req.body.password, salt);
+          updatedUser.password = hash;
+          updatedUser.save();
+          }
+          if (req.body.password){
+            changePassword();
+          }
           res.redirect(`/${updatedUser._id}`)
       }
   });
