@@ -1,7 +1,7 @@
 
 //external modules
 const express = require('express');
-const router = express.Router();
+const router = express.Router(); // could remove this
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const controllers = require('./controllers')
@@ -9,6 +9,8 @@ const authRequired = require("./middleware/authRequired");
 const logout = require("./middleware/logout");
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+// bring in EJS layout if you want jinja like extends
+
 
 const app = express();
 
@@ -43,10 +45,10 @@ app.use("/artists", authRequired, controllers.artist);
 // song route
 app.use("/songs", authRequired, controllers.song);
 // playlist route
-app.use("/playlists", authRequired, controllers.playlist)
+app.use("/playlists", authRequired, controllers.playlist);
 //user route
-app.use('/signup', logout, controllers.user)
-app.use('/login', logout, controllers.user)
+// app.use('/signup', logout, controllers.user); // remove this now since middleware is in the user.js controller
+app.use('/login', logout, controllers.user); // you can do the same for login as well
 app.use("/", controllers.user);
 
 //bind server

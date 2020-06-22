@@ -12,6 +12,16 @@ mongoose.connect(connectionString, {
     console.log('MongoDB error', error)
 });
 
+// on disconnect add a middle ware that will send back to the user that the server is down
+mongoose.on('disconnect', function () {
+   // add middleware here 
+});
+
+// on reconnect remove the middleware and allow server to run as normal
+mongoose.on('connect', function () {
+   // add middleware here 
+});
+
 module.exports = {
     Artist: require('./Artist'),
     Song: require('./Song'),

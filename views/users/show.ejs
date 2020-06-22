@@ -24,8 +24,8 @@
     <main>
         <h2><%= user.name %>'s Account Info</h2>
         <p>Email: <%= user.email %></p> 
-        <a class='button' href="/<%= user.id %>/editemail">Edit E-mail</a> <br>
-        <a class='button' href="/<%= user.id %>/editpass">Edit Password</a><br>
+        <a class='button' href="/<%= user.id %>/editemail">Edit E-mail</a> 
+        <a class='button' href="/<%= user.id %>/editpass">Edit Password</a>
         <form action="/<%= user.id %>?_method=DELETE" method="POST">
             <input class="button" type="submit" value="Delete Account" id="delete-account">
         </form>

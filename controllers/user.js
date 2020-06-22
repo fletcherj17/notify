@@ -3,15 +3,22 @@ const router = express.Router();
 const db = require("../models");
 const bcrypt = require('bcryptjs');
 
+// middleware
+const logout = require("../middleware/logout");
+
 // root route
-router.get('/index', (req,res)=>{
+router.get('/index', (req, res) => {
     res.render('users/index', {user: req.session.currentUser})
 });
 
 // register form
-router.get('/signup', (req, res)=>{
-    res.render('users/new', {message: ''});
-})
+router.get('/signup', logout, (req, res) => {
+  // if user is signed in tell user
+  if (req.currentUser) {
+    return res.render('users/new', { message: 'You are already signed in.' });
+  }
+  res.render('users/new', { message: '' });
+});
 
 // register post
 router.post("/signup", async function (req, res) {
@@ -45,30 +52,32 @@ router.get('/login', (req, res)=>{
 // login post
 router.post("/login", async function (req, res) {
     try {
-      // see if user with email exists
-    const foundUser = await db.User.findOne({ email: req.body.email });
-      // if they do not exist send error
-    if (!foundUser) {
-        return res.render('users/login',{ message: "Incorrect e-mail, or user does not exist." });
-    }
-      // if they do compare password with hash
-    const match = await bcrypt.compare(req.body.password, foundUser.password);
-      // if not match send error
-    if (!match) {
-        return res.render('users/login', {message: 'Incorrect password'});
-    }
-      // if match create session for authentication
-    req.session.currentUser = {
-        id: foundUser._id,
-        name: foundUser.name,
-        email: foundUser.email,
-    };
-    console.log(req.session.currentUser);
-      // redirect to home
-    res.redirect("/index");
+        // see if user with email exists
+      const foundUser = await db.User.findOne({ email: req.body.email });
+        // if they do not exist send error
+      if (!foundUser) {
+          return res.render('users/login',{ message: "Incorrect e-mail, or user does not exist." });
+      }
+        // if they do compare password with hash
+      const match = await bcrypt.compare(req.body.password, foundUser.password);
+        // if not match send error
+      if (!match) {
+          return res.render('users/login', {message: 'Incorrect password'});
+      }
+        // if match create session for authentication
+      req.session.currentUser = {
+          id: foundUser._id,
+          name: foundUser.name,
+          email: foundUser.email,
+      };
+        
+      console.log(req.session.currentUser);
+        // redirect to home
+        res.redirect("/index");
+      
     } catch (err) {
-    res.send({ message: "Internal Server Error", error: err });
-    console.log(err)
+      res.send({ message: "Internal Server Error", error: err });
+      console.log(err);
     }
 });
 
@@ -79,7 +88,7 @@ router.get('/logout', (req, res) => {
           console.log(err)
           res.send({message: 'Internal Server Error'})
       } else {
-          res.redirect('/')
+        res.redirect('/');
       }
   })
 })
@@ -105,8 +114,17 @@ router.get('/:id/editemail', (req, res)=>{
         } else {
           res.render('users/editEmail', {user: foundUser})
         }
+  });
 });
-});
+
+
+/* 
+  Route: 'edit password'
+  description: leave notes here on route
+
+  TODO: need to validate user logined
+  FIXME: fix password saving to db
+*/
 
 router.get('/:id/editpass', (req, res)=>{
   db.User.findById(req.params.id, (err, foundUser)=>{
@@ -116,26 +134,37 @@ router.get('/:id/editpass', (req, res)=>{
       } else {
         res.render('users/editPass', {user: foundUser})
       }
-});
+  });
 });
 
 router.put('/:id', (req, res)=>{
-  db.User.findByIdAndUpdate(req.params.id,req.body,{new:true}, function(err, updatedUser){
-      if (err){
-          res.send({message: "Internal Server Error"})
-          console.log(err)
+  db.User.findByIdAndUpdate(req.params.id, req.body, { new: true }, function (err, updatedUser) {
+    
+    if (err){
+      res.send({message: "Internal Server Error"})
+        console.log(err)
       } else {
-        const changePassword = async ()=>{
-          const salt = await bcrypt.genSalt(10);
-          const hash = await bcrypt.hash(req.body.password, salt);
-          updatedUser.password = hash;
-          updatedUser.save();
+        const changePassword = async () => {
+          // always have a try catch in your async
+          try {
+            const salt = await bcrypt.genSalt(10);
+            const hash = await bcrypt.hash(req.body.password, salt);
+
+            updatedUser.password = hash;
+            updatedUser.save();
+          } catch (err) {
+            res.send({ message: "Internal Server Error" });
+            console.log(err);
           }
-          if (req.body.password){
+        }
+      
+      if (req.body.password){
             changePassword();
-          }
-          res.redirect(`/${updatedUser._id}`)
       }
+
+      res.redirect(`/${updatedUser._id}`);
+    }
+
   });
 });
 
