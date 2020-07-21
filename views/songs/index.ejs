@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" media="screen and (max-width: 600px)" href="/styles/smallscreen.css">
     <link rel="stylesheet" href="/styles/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Tera&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="/images/notify-icon.png">
@@ -24,7 +23,7 @@
         </nav>
     <main>
         <h2>Songs</h2>
-        <ul>
+        <ul class="list">
             <% songs.forEach(song => { %>
                 <li>
                     <a href="/songs/<%= song._id %>"><%= song.title %></a>

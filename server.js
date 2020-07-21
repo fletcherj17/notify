@@ -13,7 +13,8 @@ const MongoStore = require('connect-mongo')(session);
 const app = express();
 
 //app config
-const PORT = process.env.PORT || 3000;
+// const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 app.set('view engine', 'ejs');
 
 //middleware
